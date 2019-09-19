@@ -30,7 +30,7 @@ Property | Description
 --- | --- | ---
 **InitialValue** | The inidial value of the control that's validated. If this value isn't changed, the validation fails. The default is an empty string.
 
-``` asp.net
+``` 
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Arrival Date</label>
                     <div class="col-sm-4">
