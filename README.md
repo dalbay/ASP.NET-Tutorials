@@ -60,7 +60,7 @@ Property | Description
 | Type | The data type for the comparison (String, Integer, Double, Date, or Currency)      |  
 | ControlToCompare | The ID of the control that the value of the control specified in the ControlToValidate property should be compared to |
 
-```ASP
+```ASP.NET
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Departure Date</label>
                     <div class="col-sm-4">
