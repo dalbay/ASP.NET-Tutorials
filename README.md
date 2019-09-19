@@ -27,27 +27,59 @@
 - Unobtrusive validation is on by default when you start a new web application from Empty template.
 ### Required Field Validator
 Property | Description 
---- | --- | ---
+--- | --- 
 **InitialValue** | The inidial value of the control that's validated. If this value isn't changed, the validation fails. The default is an empty string.
 
-``` 
+```ASP
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Arrival Date</label>
                     <div class="col-sm-4">
                         <asp:TextBox ID="txtArrivalDate"
                             runat="server"
                             TextMode="DateTime"
-                            CssClass="form-control">
-                        </asp:TextBox>
+                            CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-sm-5">
+                        <!-- Validator(s) -->
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorArrivalDate"
+                            runat="server"
+                            Display="Dynamic"
+                            CssClass="text-danger"
+                            ControlToValidate="txtArrivalDate"
+                            Text="*"
+							InitialValue="mm/dd/yyyy">
+                        </asp:RequiredFieldValidator>                        
+                    </div>
+                </div>
+```
+### Compare Validation
+| Property      | Description         
+| ------------- |:-------------:|  
+| ValueToCompare      | The value that the contorl specified in the ControlToValidate property should be compared to. |  
+| Operator      | the type of comparioson to perform (Equal, NotEqual, GreaterThan, GreaterThanEqual, LessThan, LessThanEqual, or DataTypeCheck)      |   
+| Type | The data type for the comparison (String, Integer, Double, Date, or Currency)      |  
+| ControlToCompare | The ID of the control that the value of the control specified in the ControlToValidate property should be compared to |
+
+```ASP
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Departure Date</label>
+                    <div class="col-sm-4">
+                        <asp:TextBox ID="txtDepartureDate" 
+                            runat="server" 
+                            TextMode="DateTime"
+                            CssClass="form-control"></asp:TextBox>
                     </div>
                     <div class="col-sm-5">
                         <!-- validator(s) -->
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorArrivalDate"
-                            runat="server"
-                            ControlToValidate="txtArrivalDate"
-                            InitialValue="mm/dd/yyyy"
-                            ErrorMessage="*">                            
-                        </asp:RequiredFieldValidator>
+                        <asp:CompareValidator ID="CompareValidatorDepDate" 
+                            runat="server" 
+                            ControlToValidate="txtDepartureDate" 
+                            Operator="LessThan" Type="Date" 
+                            Display="Dynamic" 
+                            CssClass="text-danger" 
+                            ControlToCompare="txtArrivalDate" 
+                            Text="Must be after arrival date">
+                        </asp:CompareValidator>
                     </div>
                 </div>
 ```
