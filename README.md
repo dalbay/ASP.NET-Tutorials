@@ -25,6 +25,7 @@
 - this ceates a Script folder, downloads the JavaScript files for jQuery to that folder, and downloads an assembly that registers jQuery with the ScriptManager and manages the validation.
 - if you already have the Bootstrap NuGet package installed, the NuGet package for unobtrusive validation might replace the jQuery files that were downloaded by Bootstrap with a different version. If that happens, you'll need to update the script tags in the head element so they refer to the correct version of jQuery.
 - Unobtrusive validation is on by default when you start a new web application from Empty template.
+---
 ### Required Field Validator
 Property | Description 
 --- | --- 
@@ -52,6 +53,7 @@ Property | Description
                     </div>
                 </div>
 ```
+---
 ### Compare Validation
 | Property      | Description         
 | ------------- |:-------------:|  
@@ -60,7 +62,7 @@ Property | Description
 | Type | The data type for the comparison (String, Integer, Double, Date, or Currency)      |  
 | ControlToCompare | The ID of the control that the value of the control specified in the ControlToValidate property should be compared to |
 
-```ASP.NET
+```ASP
                 <div class="form-group">
                     <label class="col-sm-3 control-label">Departure Date</label>
                     <div class="col-sm-4">
@@ -83,3 +85,36 @@ Property | Description
                     </div>
                 </div>
 ```
+---
+
+### Range Validator
+| Property      | Description         
+| ------------- |:-------------:|  
+| MinimumValue      | The minimum value allowed for the control |  
+| MaximumValue      | The maximum value allowed for the control      |   
+| Type | The data type for the comparison (String, Integer, Double, Date, or Currency)      |  
+
+```ASP
+                    <div class="form-group">
+                        <label class="col-sm-1">Quantity:</label>
+                        <div class="col-sm-3">
+                            <asp:TextBox ID="txtQuantity" 
+                                runat="server" 
+                                CssClass="form-control">
+                            </asp:TextBox>
+                        </div>
+                        <div class="col-sm-8">
+                            <asp:RangeValidator ID="RangeValidator1" 
+                                runat="server" 
+                                CssClass="text-danger" 
+                                ControlToValidate="txtQuantity" 
+                                Display="Dynamic" 
+                                ErrorMessage="Quantity must range from 1 to 500."
+                                MaximumValue="500" 
+                                MinimumValue="1" 
+                                Type="Integer">
+                            </asp:RangeValidator>
+                        </div>
+                    </div>
+```
+---
