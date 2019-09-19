@@ -25,4 +25,29 @@
 - this ceates a Script folder, downloads the JavaScript files for jQuery to that folder, and downloads an assembly that registers jQuery with the ScriptManager and manages the validation.
 - if you already have the Bootstrap NuGet package installed, the NuGet package for unobtrusive validation might replace the jQuery files that were downloaded by Bootstrap with a different version. If that happens, you'll need to update the script tags in the head element so they refer to the correct version of jQuery.
 - Unobtrusive validation is on by default when you start a new web application from Empty template.
+### Required Field Validator
+Property | Description 
+--- | --- | ---
+**InitialValue** | The inidial value of the control that's validated. If this value isn't changed, the validation fails. The default is an empty string.
 
+``` asp.net
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Arrival Date</label>
+                    <div class="col-sm-4">
+                        <asp:TextBox ID="txtArrivalDate"
+                            runat="server"
+                            TextMode="DateTime"
+                            CssClass="form-control">
+                        </asp:TextBox>
+                    </div>
+                    <div class="col-sm-5">
+                        <!-- validator(s) -->
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidatorArrivalDate"
+                            runat="server"
+                            ControlToValidate="txtArrivalDate"
+                            InitialValue="mm/dd/yyyy"
+                            ErrorMessage="*">                            
+                        </asp:RequiredFieldValidator>
+                    </div>
+                </div>
+```
