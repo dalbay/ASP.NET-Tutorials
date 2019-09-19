@@ -147,3 +147,60 @@ Property | Description
                 </div>
 ```
 ---
+
+### Custom Validator
+| Property      | Description         
+| ------------- |:-------------:|  
+| Value      | text string to be validated 
+| IsValid      | set to true if the value passes
+| ValidateEmptyText | Boolean value indicates if you still want to run the test even if there is no user input
+- *When you want the validation done on the server side*, place the code within the ServerValidate event's event handler to do the validation.
+- double-click on the custom validator control in the Designer; this will output the event handler code; use the arguments value (```*args.Value*```) that is passed into the method to test this input data if its valid  (```*args.IsValid*```)
+- When the validation fails, the custom validation error message will be displayed to the user.
+- *When you want validation done on the client side*, you will need to code a JavaScript function for it; assign it to the ClientValidationFunction property of the custom validation. This also takes in the input data value(```*args.Value*```)
+and evaluates it (```*args.IsValid*```)
+
+```ASP
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Enter Unique Value:</label>
+                    <div class="col-sm-4">
+                        <asp:TextBox ID="txtEntry" runat="server"></asp:TextBox>
+                    </div>
+                    <div class="col-sm-5">
+                        <!-- validator(s) -->
+                        <asp:CustomValidator ID="CustomValidatorEntry"
+                            runat="server"
+                            ErrorMessage="Entry must be unique"
+                            CssClass="text-danger"
+                            ControlToValidate="txtEntry"
+                            ValidateEmptyText="true"
+                            ClientValidationFunction="entryIsUnique"
+                            OnServerValidate="CustomValidatorEntry_ServerValidate">
+                        </asp:CustomValidator>
+                    </div>
+                </div>
+```
+*C# code for Sever Side Validation:*
+```C#
+	        protected void CustomValidatorEntry_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            args.IsValid = IsUniqueEntry(args.Value);
+        }
+        protected bool IsUniqueEntry(string inputValue)
+        {
+            // compare the input value and return true/false
+            return true;
+        }
+```
+*JavaScript code for Client Side Validation:*
+```JavaScript
+                <script>
+                    function testInputValue(args) {
+                        args.IsValid = isInputUnique(args.Value);
+                    }
+                    function isInputUnique(inputValue) {
+                        // check the input value; return boolean
+                    }                
+                </script>
+```
+---
