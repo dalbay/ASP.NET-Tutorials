@@ -118,3 +118,32 @@ Property | Description
                     </div>
 ```
 ---
+
+### Regular Expression Validator
+| Property      | Description         
+| ------------- |:-------------:|  
+| ValidationExpression      | A String that specifies a regular expression. The regular expression defines a pattern that the input data must match to be valid. 
+- ASP.NET provides some common regualar expressions that you can access from the Regular Expression Editor. To display its dialog box, select the validation control in the Designer, select the ValidationExpression property in the Properties window, and click the ellipsis button.
+
+```ASP
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Email address</label>
+                    <div class="col-sm-4">
+                        <asp:TextBox ID="txtEmail"
+                            runat="server"
+                            TextMode="Email"
+                            CssClass="form-control"></asp:TextBox>
+                    </div>
+                    <div class="col-sm-5">
+                        <!-- validator(s) -->
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
+                            runat="server"
+                            Display="Dynamic"
+                            CssClass="text-danger"
+                            Text="Must be valid email address"                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                            ControlToValidate="txtEmail">
+                        </asp:RegularExpressionValidator>
+                    </div>
+                </div>
+```
+---
