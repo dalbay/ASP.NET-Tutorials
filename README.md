@@ -204,3 +204,24 @@ and evaluates it (```*args.IsValid*```)
                 </script>
 ```
 ---
+
+### Validation Summary Control
+| Property      | Description         
+| ------------- |:-------------:|  
+| DisplayMode      | how messages are displayed (BulletList by default),List,and SingleParagraph
+| HeaderText      | displayed before the error message
+| ShowSummary | default is true
+| ShowMessageBox | default is false
+- 
+
+```ASP
+                <!-- place it wherever you want the error message displayed -->
+                <asp:ValidationSummary ID="ValidationSummary1" 
+                    runat="server" 
+                    Display="Dynamic" 
+                    CssClass="text-danger" 
+                    DisplayMode="SingleParagraph"  
+                    HeaderText="* means that the field is required" />
+```
+
+---
