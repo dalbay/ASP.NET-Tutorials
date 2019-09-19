@@ -53,6 +53,30 @@ Property | Description
                     </div>
                 </div>
 ```
+*Required Field Validator Example with **ValidationGroup** property*
+```ASP
+                        <asp:DropDownList ID="ddlNoOfPeople" runat="server" CssClass="form-control">
+                            <asp:ListItem>1</asp:ListItem>
+                            <asp:ListItem>2</asp:ListItem>
+                            <asp:ListItem>3</asp:ListItem>
+                            <asp:ListItem>4</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" 
+                            runat="server" 
+                            ErrorMessage="*" 
+                            ControlToValidate="ddlNoOfPeople" 
+                            InitialValue="Choose a number..." 
+                            ValidationGroup="People" 
+                            CssClass="text-danger">
+                        </asp:RequiredFieldValidator>
+                        <asp:Button ID="btnSubmitNumOfPeople" 
+                            runat="server" 
+                            Text="Submit" 
+                            ValidationGroup="People" 
+                            CommandName="People" 
+                            CssClass="btn" 
+                            OnClick="btnSubmitNumOfPeople_Click" />
+```
 ---
 ### Compare Validation
 | Property      | Description         
@@ -212,7 +236,6 @@ and evaluates it (```*args.IsValid*```)
 | HeaderText      | displayed before the error message
 | ShowSummary | default is true
 | ShowMessageBox | default is false
-- 
 
 ```ASP
                 <!-- place it wherever you want the error message displayed -->
