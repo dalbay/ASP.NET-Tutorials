@@ -19,11 +19,11 @@
 
 - View state is implemented with a view state object that's defined by the StateBag class. This class defines a collection of view state items.
 ### Common members of the StateBag class
-| Properties        | Description |
+| Properties    | Description   |
 | ------------- |:-------------:| 
-| Count | Gets the number of StateItem objects in the StateBag object.|
-| Keys | Gets a collection of keys representing the items in the StateBag object.|
-| Values | Gets a collection of the view-state values stored in the StateBag object.|
+| Count         | Gets the number of StateItem objects in the StateBag object.|
+| Keys          | Gets a collection of keys representing the items in the StateBag object.|
+| Values        | Gets a collection of the view-state values stored in the StateBag object.|
 
 | Methods        | Description |
 | ------------- |:-------------:| 
