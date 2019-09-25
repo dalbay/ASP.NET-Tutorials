@@ -320,6 +320,127 @@ New HttpCookie(name, value)
             }
         }
 ```
-1. Start a *Click event handler for the Submit button* of the Request form. It should set the properties of the *Reservation object* based on the values the user entered on the form. Then, write a statement that *saves the Reservation object in session state*, and finish with a statement that *redirects to the Confirmation page*.
+2. Start a **Click event handler for the Submit button** of the Request form. It should set the properties of the **Reservation object** based on the values the user entered on the form. Then, write a statement that **saves the Reservation object in session state**, and finish with a statement that **redirects to the Confirmation page**.
+```C#
+        // Click event handler for the submit button
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            // initialize Reservation object and set property values
+            Reservation reservation = new Reservation();
+            reservation.ArrivalDate = Convert.ToDateTime(txtArrivalDate.Text);
+            reservation.DepartureDate = Convert.ToDateTime(txtDepartureDate.Text);
+            double days = (Convert.ToDateTime(txtDepartureDate.Text) - Convert.ToDateTime(txtArrivalDate.Text)).TotalDays;
+            reservation.NoOfDays = Convert.ToInt32(days);
+            reservation.NoOfPeople = Convert.ToInt32(ddlNoOfPeople.Text);
+            if (rdoDouble.Checked) reservation.BedType = rdoDouble.Text;
+            if (rdoSingle.Checked) reservation.BedType = rdoSingle.Text;
+            if (rdoKing.Checked) reservation.BedType = rdoKing.Text;
+            reservation.SpecialRequests = txtSpecialRequests.Text;
+            reservation.FirstName = txtFirstName.Text;
+            reservation.LastName = txtLastName.Text;
+            reservation.Email = txtEmail.Text;
+            reservation.Phone = txtPhone.Text;
+            reservation.PreferredMethod = ddlPreferredMethod.SelectedItem.Text;
+            //save the object to session state
+            Session["Reservation"] = reservation;
+            //redirect to confirmation page
+            Response.Redirect("Confirm.aspx");
+        }
+```
+3. Complete the Load event handler for the Confirmation form. This handler should **get the Reservation object that was stored in session state** by the Request form and store it in the variable named reservation that’s defined at the start of the code-behind file. Then, it should **display the properties of that object** in the labels on the form by calling a DisplayReservation method.
+```C#
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack) //if the page request isn't postback
+            {
+                lblYear.Text = DateTime.Today.Year.ToString();
+                // display saved reservation data if there is any
+                if (Session["Reservation"] != null)
+                {
+                    DisplayReservation();
+                }
+            }
+        }
+		
+        private void DisplayReservation()
+        {
+            //get the reservation object from session
+            Reservation reservation = (Reservation)Session["Reservation"];
 
+            lblArrivalDate.Text = reservation.ArrivalDate.ToShortDateString();
+            lblDepartureDate.Text = reservation.DepartureDate.ToShortDateString();
+            lblNoOfPeople.Text = reservation.NoOfPeople.ToString();
+            lblNoOfDays.Text = reservation.NoOfPeople.ToString();
+            if (reservation.BedType == "King")
+                lblBedType.Text = "King";
+            else if (reservation.BedType == "Two Queens")
+                lblBedType.Text = "Two Queens";
+            else
+                lblBedType.Text = "Single";
 
+            lblSpecialRequests.Text = reservation.SpecialRequests;
+            lblFirstName.Text = reservation.FirstName;
+            lblLastName.Text = reservation.LastName;
+            lblEmail.Text = reservation.Email;
+            lblPhone.Text = reservation.Phone;
+            lblPreferredMethod.Text = reservation.PreferredMethod;
+        }
+```
+4. The Modify Request button on the Confirmation form  should post back to the Request form.
+```C#
+        protected void btnModify_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Request.aspx");
+        }
+```
+5. Add code to the Click event handler of the Confirm button on the Confirmation form that **creates two persistent cookies** with the user’s first name and email address and **adds them to the HttpResponse object**. Set the **expiration date for the cookies** to six months from the current date.
+```C#
+        protected void btnConfirm_Click(object sender, EventArgs e)
+        {
+            lblMessage.Text = "Thank you for your request.<br> We will get back to you within 24 hours.";
+            lblMessage.ForeColor = System.Drawing.Color.Green;
+            AddCookie();
+        }
+        
+		//create two persistent cookies and add to HttpResponse object.        
+        private void AddCookie()
+        {
+            HttpCookie fnameCookie = new HttpCookie("FirstName", lblFirstName.Text);
+			//set expiration date to six month from current date
+            fnameCookie.Expires = DateTime.Now.AddMonths(6);
+			
+            HttpCookie emailCookie = new HttpCookie("Email", lblEmail.Text);
+			//set expiration date to six month from current date
+            emailCookie.Expires = DateTime.Now.AddMonths(6);
+			
+            Response.Cookies.Add(fnameCookie);
+            Response.Cookies.Add(emailCookie);
+        }
+```
+6. Add code to the Load event handler of the Request form that retrieves the two cookies and displays their values on the form. This code should be executed only if the page is not being posted back, a Reservation object is not found in session state, and the cookies exist.
+```C#
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack) //if the page request isn't postback
+            {
+                // set copyright year no matter what
+                lblYear.Text = currentYear;
+
+                // display saved reservation data if there is any
+                if (Session["Reservation"] != null)
+                {
+                    DisplayReservation();
+                }
+                else  {
+                    // otherwise, set default values
+                    txtArrivalDate.Text = currentDate;
+                    rdoKing.Checked = true;
+                    // get the cookies and display the values
+                    if (!(Request.Cookies["FirstName"] == null))
+                        txtFirstName.Text = Request.Cookies["FirstName"].Value;
+                    if (!(Request.Cookies["Email"] == null))
+                        txtFirstName.Text = Request.Cookies["Email"].Value;
+                }
+            }
+        }
+```
