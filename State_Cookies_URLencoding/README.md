@@ -19,17 +19,17 @@
 
 - View state is implemented with a view state object that's defined by the StateBag class. This class defines a collection of view state items.
 ### Common members of the StateBag class
-| Properties    | Description   |
+| Properties    | Description |
 | ------------- |-------------| 
 | Count         | Gets the number of StateItem objects in the StateBag object.|
 | Keys          | Gets a collection of keys representing the items in the StateBag object.|
 | Values        | Gets a collection of the view-state values stored in the StateBag object.|
 
 | Methods             | Description   |
-|---------------------|-------------| 
+|---------------------|---------------| 
 | Add(String, Object) | Adds a new StateItem object to the StateBag object. If the item already exists in the StateBag object, this method updates the value of the item.|
-| Clear() | Removes all items from the current StateBag object.|
-| Remove(String) | 	Removes the specified key/value pair from the StateBag object.|
+| Clear()             | Removes all items from the current StateBag object.|
+| Remove(String)      | Removes the specified key/value pair from the StateBag object.|
 
 - A statement that adds or updates a view state item
 ```C#
@@ -51,13 +51,13 @@
 - ASP.NET uses session state to track the state of each user of an application.
 - Session state objects are maintained in server memory by default.
 ### Common members of the HttpSessionState class
-| Properties        | Description |
-| ------------- |:-------------:| 
-| SessionID | The unique id of the session|
-| Count | The number of items in the session state collection |
+| Properties    | Description   |
+| ------------- |---------------| 
+| SessionID     | The unique id of the session|
+| Count         | The number of items in the session state collection |
 
-| Methods        | Description |
-| ------------- |:-------------:| 
+| Methods       | Description  |
+| ------------- |--------------| 
 | Add(String, Object) | Adds an item to the session state collection. If the item already exists its value is updated |
 | Clear() | Removes all items from the session state collection.|
 | Remove(String) | 	Removes the item with the specified name from the session state collection |
@@ -79,7 +79,7 @@
 	string email = HttpContext.Current.Session["Email"].ToString();
 ```
 ### The page events that can be used to get and save session state data-bound
-| Event        | Handler name | Description |
+| Event         | Handler name  | Description |
 | ------------- |:-------------:| ---------- |
 | Load | Page_Load | This event occurs when a page is requested from the server, after all controls have been initialized and view state has been restored. 
 | PreRender| Page_PreRender| This event occurs after all the control events for the page have been processed but before the HTML that will be sent back to the browser is generated |
@@ -122,8 +122,8 @@ protected void btnRemove_Click(object sender,
 ```
 ***Note :*** You only need to update a session state item explicitly if it's stored in a value-type variable, like an interger. If it's stored in a reference-type variable, like a custom object, the session state item is updated when the variable is updated. That's because the variable is a pointer to the object that's updated.
 #### Four modes for storing session state data:
-| Mode        | Description |
-| ------------- |:-------------:| 
+| Mode          | Description |
+| ------------- |---------------| 
 | In-process | stores the data in IIS server memory in the same process as the application. This is the default, but it's only suitable when a single server is used for the application |
 | State Server | Stores the data in server memory under the control of the ASP.NET state service. |
 |SQL Server | Stores the data in a SQL Server database|
@@ -140,7 +140,7 @@ protected void btnRemove_Click(object sender,
 - StateConnectionString
 - SqlConnectionString
 - AllowCustomSqlDatabase
-*A sessionState element in the Web.config file that uses in-process mode:*
+*A sessionState element in the Web.config file that uses in-process mode:*
 ```C#
 <system.web>
     <sessionState mode="InProc"
@@ -174,10 +174,7 @@ In contrast to session state, which stores data for a single user session, appli
 - Common indexer of the HttpApplicationState and Cache classes - ```[name]```
 - Common property of the HttpApplicationState and Cache classes - ```Count```
 - Common methods of the HttpApplicationState and Cache classes - ```Add(name, value)``` - ```Clear()``` - ```Remove(name)```
-- The Insert method of the Cache class - 
-```Insert(name, value, dependency, 
-    absolute, sliding)
-``` 
+- The Insert method of the Cache class - ```Insert(name, value, dependency, absolute, sliding)``` 
 - Common methods of the HttpApplicationState class
   - ```Clear()```
   - ```Lock()```
@@ -208,7 +205,8 @@ In contrast to session state, which stores data for a single user session, appli
 - Application_End
 - Session_Start
 - Session_End
-***A Global.asax file that creates an object in application state***
+
+##### Example: A Global.asax file that creates an object in application state
 ```C#
 public class Global : System.Web.HttpApplication
 {
