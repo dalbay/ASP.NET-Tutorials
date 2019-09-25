@@ -294,6 +294,32 @@ New HttpCookie(name, value)
 ``` C#
 	Response.Redirect("~/Order.aspx?cat=" + categoryID);
 ```
+---
+#### Example:
+- Store data that’s entered into the Request page so it can be displayed on a Confirmation page
+![Request page imgage](./images/sessionImg.png)
+1. Review the code for the Load event handler of the Request form. If the page request isn’t a postback and a Reservation object is stored in session state (which means that it has already been created), this handler gets the Reservation object from session state and calls the DisplayReservation method that moves the data from the Reservation object to the controls on the Request page. Otherwise, the Load event handler sets the starting values for the arrival date text box and the radio buttons.
+```C#
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // set copyright year no matter what
+                lblYear.Text = currentYear;
 
+                // display saved reservation data if there is any
+                if (Session["Reservation"] != null)
+                {
+                    DisplayReservation();
+                }
+                else  {
+                    // otherwise, set default values
+                    txtArrivalDate.Text = currentDate;
+                    rdoKing.Checked = true;
+                }   
+            }
+        }
+```
+1. Start a *Click event handler for the Submit button* of the Request form. It should set the properties of the *Reservation object* based on the values the user entered on the form. Then, write a statement that *saves the Reservation object in session state*, and finish with a statement that *redirects to the Confirmation page*.
 
 
