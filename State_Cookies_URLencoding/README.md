@@ -25,8 +25,8 @@
 | Keys          | Gets a collection of keys representing the items in the StateBag object.|
 | Values        | Gets a collection of the view-state values stored in the StateBag object.|
 
-| Methods        | Description |
-| ------------- |:-------------:| 
+| Methods             | Description   |
+| ------------------- |:-------------:| 
 | Add(String, Object) | Adds a new StateItem object to the StateBag object. If the item already exists in the StateBag object, this method updates the value of the item.|
 | Clear() | Removes all items from the current StateBag object.|
 | Remove(String) | 	Removes the specified key/value pair from the StateBag object.|
