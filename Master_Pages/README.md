@@ -116,11 +116,33 @@ To provide *default content* that can be overridden by a content page, add conte
 	</asp:ContentPlaceHolder>
 ```  
 ***How to display a placeholder's default content in a content page***  
-• Delete the Content control associated with the placeholder that has the default content. You can do that manually or by choosing Default to Master's Content from the placeholder's smart tag menu.  
+• Delete the Content control associated with the placeholder that has the default content. You can do that manually or by choosing Default to Master's Content from the placeholder's smart tag menu.
 <br/>
 
 ***How to override a placeholder's default content in a content page***  
-• Add content to the Content control for the related placeholder that's added when you create the content page. If you've deleted a Content control, you can add a new one by choosing Create Custom Content from the placeholder's smart tag menu.  
+• Add content to the Content control for the related placeholder that's added when you create the content page. If you've deleted a Content control, you can add a new one by choosing Create Custom Content from the placeholder's smart tag menu.
+<br/>
+
+***How to expose a public property in a master page***  
+Another ways to provide content that can be overridden by a content page is to use *public properties*. For instance, you can use a public property for an h1 element that will be displayed at the top of every page. Then, the content page can override the value in this h1 element.  
+```HTML
+<!--The aspx code for the element in the master page-->
+	<main class="col-sm-9">
+		<h1><asp:Label ID="lblPageHeader" runat="server">
+		</asp:Label></h1>
+		<asp:ContentPlaceHolder ID="mainPlaceholder"
+			runat="server">
+		</asp:ContentPlaceHolder>
+	</main>
+	The C# in the code-behind file that exposes the property
+	public string HeaderText 
+	{
+		set { lblPageHeader.Text = value;  }
+	}
+
+
+```
+
 
 
 
