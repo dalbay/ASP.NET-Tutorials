@@ -85,8 +85,7 @@ Values of the ClientIDMode attribute
 ***Example:***  
 ```HTML
 	<asp:Content ID="mainContent" ContentPlaceHolderID="mainPlaceholder" runat="server">
-		<asp:ListBox ID="lstCart" runat="server">
-		</asp:ListBox>
+		<asp:ListBox ID="lstCart" runat="server"></asp:ListBox>
 		<asp:Button ID="btnRemove" runat="server" 
 			Text="Remove Item" OnClick="btnRemove_Click"
 			CssClass="btn" />
@@ -128,20 +127,28 @@ Another ways to provide content that can be overridden by a content page is to u
 ```HTML
 <!--The aspx code for the element in the master page-->
 	<main class="col-sm-9">
-		<h1><asp:Label ID="lblPageHeader" runat="server">
-		</asp:Label></h1>
-		<asp:ContentPlaceHolder ID="mainPlaceholder"
-			runat="server">
-		</asp:ContentPlaceHolder>
+		<h1><asp:Label ID="lblPageHeader" runat="server"></asp:Label></h1>
+			<asp:ContentPlaceHolder ID="mainPlaceholder" runat="server"></asp:ContentPlaceHolder>
 	</main>
-	The C# in the code-behind file that exposes the property
+```
+```C#
+// The C# in the code-behind file that exposes the property
 	public string HeaderText 
 	{
 		set { lblPageHeader.Text = value;  }
 	}
-
-
+```  
+***How to access a public property from a content page***  
+To access a master page's public properties, a content page must have a MasterType directive with either a TypeName or VirtualPath attribute. The MasterType directive goes below the Page directive.  
+```HTML
+<!--The MasterType directive for a content page-->
+	<%@ MasterType VirtualPath="~/Site.Master" %>
 ```
+```C#
+// The C# code in the code-behind file that accesses the public property
+	Master.HeaderText = "Your Shopping Cart";
+```  
+
 
 
 
