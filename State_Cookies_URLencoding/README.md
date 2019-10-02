@@ -417,7 +417,7 @@ New HttpCookie(name, value)
             Response.Cookies.Add(emailCookie);
         }
 ```
-6. Add code to the Load event handler of the Request form that retrieves the two cookies and displays their values on the form. This code should be executed only if the page is not being posted back, a Reservation object is not found in session state, and the cookies exist.
+6. Add code to the Load event handler of the Request form that **retrieves the two cookies** and displays their values on the form. This code should be executed only if the page is not being posted back, a Reservation object is not found in session state, and the cookies exist.
 ```C#
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -444,3 +444,4 @@ New HttpCookie(name, value)
             }
         }
 ```
+
