@@ -148,6 +148,37 @@ To access a master page's public properties, a content page must have a MasterTy
 // The C# code in the code-behind file that accesses the public property
 	Master.HeaderText = "Your Shopping Cart";
 ```  
+---
+<br/>
+
+### Murach's Sample Tutorial -	Create a master page for the Reservation application
+
+In this application, you’ll start by creating a master page for the Reservation application. Then, you’ll convert the Request and Confirm pages to content pages. The resulting pages, like the one that follows, should look and operate the same way they did before.
+ 
+Create the master page
+1.	Open the XEx09Reservation web application in your exercises_extra directory.
+2.	Add a master page named Site.Master to the project and add “Chapter 9: Reservations” as the content of the title element in the head section.
+3.	Change the ID for the placeholder in the form element to “mainPlaceHolder”. You can leave the ID for the placeholder in the head section as “head”.
+4.	Move the viewport meta tag from the Request page to the head section of the master page. Then, move the link and script elements from the Request page into the head section of the master page.
+5.	Assign the form element to the “form-horizontal” CSS class, and the div element to the “container” class. Then, move the header and footer elements from the Request page to locations inside the container div, above and below the placeholder control.
+6.	Wrap the placeholder in the container div with a main element. At this point, the form in the body element should contain a div whose class is “container”, and this div should contain a header element, a main element that contains a placeholder, and a footer element.
+7.	Display the code-behind file for the master page, and add code to the Load event handler for the page that sets the text of the label in the footer to the current year.
+Convert the Request page to a content page
+8.	Add a MasterPageFile attribute to the Page directive of the Request page that points to the site.master file.
+9.	After the page directive, add a Content control that points to the main placeholder in the master page, and move all the contents of the form element into this control.
+10.	Delete all other elements in the aspx for the page. At this point, there should be a Page directive and one Content control that contains the aspx code for the Request page.
+11.	Display the code-behind file for the page, and remove the code in the Load event handler for the page that sets the copyright year. Then remove the private currentYear variable at the top of the page.
+Test the Request page
+12.	Run the application to see how everything is working. At this point, the Request page should look the way it did before the conversion.
+13.	If there are any other problems, fix them.
+Convert the Confirm page to a content page and test the entire application
+14.	Convert the Confirm page to a content page in the same way that you converted the Request page.
+15.	Test this page and fix any problems.
+16.	Test the entire application to make sure that it works the same way that it did before.
+Add a custom style sheet for the Confirmation page
+17.	Add a style sheet named confirm.css to the Content folder. Add a rule set that changes the color of h3 elements to “darkslateblue”.
+18.	Add a Content control to the Confirm.aspx page that points to the head placeholder in the master page. Then, drag the new style sheet to that content control.
+19.	Run the application and see that the new style is applied to the Confirmation page.
 
 
 
