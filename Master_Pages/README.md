@@ -55,11 +55,11 @@ Values of the ClientIDMode attribute
 
 ***Example:*** The select elements generated for a list box:
 ```HTML
-// When ClientIDMode is Predictable
+<!--When ClientIDMode is Predictable-->
 	<select name="ctl00$mainPlaceHolder$lstCart" id="mainPlaceHolder_lstCart">...</select>
-// When ClientIDMode is Static
+<!--When ClientIDMode is Static-->
 	<select name="ctl00$mainPlaceHolder$lstCart" id="lstCart">...</select>
-// When ClientIDMode is AutoID
+<!--When ClientIDMode is AutoID-->
 	<select name="ctl00$mainPlaceHolder$lstCart" id="ctl00_mainPlaceHolder_lstCart">...</select>
 ```
 
@@ -104,9 +104,9 @@ To provide *default content* that can be overridden by a content page, add conte
 
 ***How to set a default title in a master's page and override it in a content page***
 ```HTML
-// Set the default title in master page, enter the content for the title element
+<!--Set the default title in master page, enter the content for the title element-->
 	<title>Shopping Cart</title>
-// override it in a content page, use the Title attribute of the Page directive
+<!--override it in a content page, use the Title attribute of the Page directive-->
 	<%@ Page Title="Your Shopping Cart" Language="C#" . . . %>
 ```  
 ***How to set default content in a master page***  
