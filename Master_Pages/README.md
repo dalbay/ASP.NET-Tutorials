@@ -29,21 +29,22 @@
 ```  
 ***How to Work with the ClientIDMode attribute :***  
 - **Cliend id** - the id attribute that ASP.NET  assigns to an HTML element when it renders HTML to the browser.  
+
+
+For example, a list box with an ID of "1stCart" will be rendered as a select element with an id of "1stCart".
 <br/>
 
-For example, a list box with an ID of "1stCart" will be rendered as a select element with an id of "1stCart".  
+However, if a server control is placed inside a parent control, such as a ContentPlaceHolder control, ASP.NET uses a combination of the parent control's ID and the server control's ID to create the client id.
 <br/>
 
-However, if a server control is placed inside a parent control, such as a ContentPlaceHolder control, ASP.NET uses a combination of the parent control's ID and the server control's ID to create the client id. 
-<br/>
-
-You can see how this can be a problem if your CSS expects the id to be "1stCart" but ASP.NET generates an id of "mainPlaceHolder_1stCart".  
+You can see how this can be a problem if your CSS expects the id to be "1stCart" but ASP.NET generates an id of "mainPlaceHolder_1stCart".
 <br/>
 
 The good news is that you can control how a client id is created by using the ClientIDMode attribute of a page or a control.  
 *When to change the page's ClientIDMode attribute:* when you're converting existing pages s othey use a master page and you've already written the CSS for them.  
 
 Values of the ClientIDMode attribute
+
 |  Value     | Description  |
 |----------- | -------------|
 |Predictable  |  the client id is the name of the parent container added to the name of the server control | 
