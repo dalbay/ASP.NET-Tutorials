@@ -96,9 +96,12 @@ Values of the ClientIDMode attribute
 		...
 	</asp:Content>
 ```  
+<br/>
 
 ### How to Customize Content Pages  
 To provide *default content* that can be overridden by a content page, add content to a placeholder in a master page. This content is overridden by the Content control that's generated for the placeholder when a new content page is created, but you can display the default content by deleting this Content control.  
+<br/>
+
 ***How to set a default title in a master's page and override it in a content page***
 ```HTML
 // Set the default title in master page, enter the content for the title element
@@ -114,6 +117,8 @@ To provide *default content* that can be overridden by a content page, add conte
 ```  
 ***How to display a placeholder's default content in a content page***  
 • Delete the Content control associated with the placeholder that has the default content. You can do that manually or by choosing Default to Master's Content from the placeholder's smart tag menu.  
+<br/>
+
 ***How to override a placeholder's default content in a content page***  
 • Add content to the Content control for the related placeholder that's added when you create the content page. If you've deleted a Content control, you can add a new one by choosing Create Custom Content from the placeholder's smart tag menu.  
 
