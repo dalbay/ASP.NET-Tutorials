@@ -62,3 +62,17 @@ Values of the ClientIDMode attribute
 // When ClientIDMode is AutoID
 	<select name="ctl00$mainPlaceHolder$lstCart" id="ctl00_mainPlaceHolder_lstCart">...</select>
 ```
+
+### How to Create Content Pages
+***Two ways to add a content page to a project:***  
+• Right-click on the master page in the Solution Explorer, then choose Add Content Page. The new content page will be named WebFormnumber.aspx by default.  
+• Right-click on the project in the Solution Explorer and select AddWeb Form with Master Page. Then, enter a name for the content page in the resulting dialog box and click OK. In the Select a Master Page dialog box that appears, select the master page you want to use and click OK.  
+<br/>
+
+***How to convert a regular ASP.NET page to a content page***  
+• Add a MasterPageFile attribute to the Page directive and set its value to the URL of the master page.  
+• Add one or more Content controls outside the html element. For each Content control, set its ContentPlaceHolderID attribute to the correct content placeholder of the master page. Then, move the original contents of the page inside the Content controls.  
+• If the head element contains other elements the page needs, like link or script elements, add a Content control and set its ContentPlaceHolderID to the content placeholder that’s in the master page’s head element. Then, move the needed elements inside this control.  
+• Delete everything that’s outside the Content controls except the Page directive.  
+
+
