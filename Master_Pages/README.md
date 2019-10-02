@@ -74,5 +74,49 @@ Values of the ClientIDMode attribute
 • Add one or more Content controls outside the html element. For each Content control, set its ContentPlaceHolderID attribute to the correct content placeholder of the master page. Then, move the original contents of the page inside the Content controls.  
 • If the head element contains other elements the page needs, like link or script elements, add a Content control and set its ContentPlaceHolderID to the content placeholder that’s in the master page’s head element. Then, move the needed elements inside this control.  
 • Delete everything that’s outside the Content controls except the Page directive.  
+<br/>
+
+***How to add content to a page***  
+• To add content to a content page, you add text, HTML elements, or server controls to Source view or Design view, just as you would for any other page. Just be sure that what you add is within the right Content control.  
+• When you display a content page in Design view, the elements from the master page are displayed, but you can't edit them.  
+• If you're using Bootstrap to format your web page, the display in Design view probably won't look right.  
+<br/>
+
+***Example:***  
+```HTML
+	<asp:Content ID="mainContent" ContentPlaceHolderID="mainPlaceholder" runat="server">
+		<asp:ListBox ID="lstCart" runat="server">
+		</asp:ListBox>
+		<asp:Button ID="btnRemove" runat="server" 
+			Text="Remove Item" OnClick="btnRemove_Click"
+			CssClass="btn" />
+		<asp:Button ID="btnEmpty" runat="server" 
+			Text="Empty Cart" OnClick="btnEmpty_Click"
+			CssClass="btn" />
+		...
+	</asp:Content>
+```  
+
+### How to Customize Content Pages  
+To provide *default content* that can be overridden by a content page, add content to a placeholder in a master page. This content is overridden by the Content control that's generated for the placeholder when a new content page is created, but you can display the default content by deleting this Content control.  
+***How to set a default title in a master's page and override it in a content page***
+```HTML
+// Set the default title in master page, enter the content for the title element
+	<title>Shopping Cart</title>
+// override it in a content page, use the Title attribute of the Page directive
+	<%@ Page Title="Your Shopping Cart" Language="C#" . . . %>
+```  
+***How to set default content in a master page***  
+```HTML
+	<asp:ContentPlaceHolder id="footerPlaceHolder" runat="server">
+		<asp:Label ID="lblDaysUntilHalloween" runat="server"></asp:Label>
+	</asp:ContentPlaceHolder>
+```  
+***How to display a placeholder's default content in a content page***  
+• Delete the Content control associated with the placeholder that has the default content. You can do that manually or by choosing Default to Master's Content from the placeholder's smart tag menu.  
+***How to override a placeholder's default content in a content page***  
+• Add content to the Content control for the related placeholder that's added when you create the content page. If you've deleted a Content control, you can add a new one by choosing Create Custom Content from the placeholder's smart tag menu.  
+
+
 
 
