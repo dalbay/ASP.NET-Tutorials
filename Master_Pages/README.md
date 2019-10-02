@@ -155,8 +155,9 @@ To access a master page's public properties, a content page must have a MasterTy
 
 In this application, you’ll start by creating a master page for the Reservation application. Then, you’ll convert the Request and Confirm pages to content pages. The resulting pages, like the one that follows, should look and operate the same way they did before.
 
-![Reservation app image](./images/resevImg.png)
-Create the master page
+![Reservation app image](./images/resevImg.png)  
+
+**Create the master page**
 1.	Open the XEx09Reservation web application in your exercises_extra directory.
 2.	Add a master page named Site.Master to the project and add “Chapter 9: Reservations” as the content of the title element in the head section.
 3.	Change the ID for the placeholder in the form element to “mainPlaceHolder”. You can leave the ID for the placeholder in the head section as “head”.
