@@ -8,6 +8,7 @@ using System.Web;
 /// </summary>
 public class House
 {
+    public int Id { get; set; }
     public string[] Images { get; set; }
     public double Price { get; set; }
     public int Area { get; set; }
@@ -22,8 +23,9 @@ public class House
     {
 
     }
-    public House(string[] images, double price, int area, string location, string heating, string ac, string buildYear, string description)
+    public House(int id, string[] images, double price, int area, string location, string heating, string ac, string buildYear, string description)
     {
+        Id = id;
         Images = images;
         Price = price;
         Area = area;
