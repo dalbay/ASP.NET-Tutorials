@@ -8,7 +8,7 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-      <h1 class="jumbotron-heading">Houses from the Richmound County District</h1>
+      <h1 class="jumbotron-heading">Houses from the <%:county%> District</h1>
       <p class="lead text-muted">We have a greate list of beautiful houses for sale in Richmond County. </p>
     </div>
   </section>

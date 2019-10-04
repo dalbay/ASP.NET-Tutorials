@@ -14,11 +14,13 @@ public partial class County : System.Web.UI.Page
     public static string county;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Request.QueryString["ID"] != null)
+        if (!IsPostBack) {
+        if (Request.QueryString["County"] != null)
         {
-            county = Request.QueryString["ID"].ToString();
+            county = Request.QueryString["County"];
         }
         fillHousePrices(county);
+        }
     }
     protected void fillHousePrices(string countyName)
     {
