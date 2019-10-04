@@ -38,9 +38,8 @@ public partial class County : System.Web.UI.Page
                        };
             house1ImageUrl = "Images/House/"+ item.ElementAt(0).Images[0];
             house2ImageUrl = "Images/House/"+ item.ElementAt(1).Images[0];
-            house3ImageUrl =  "Images/House/"+item.ElementAt(2).Images[0];
+            house3ImageUrl =  "Images/House/"+ item.ElementAt(2).Images[0];
 
-            // "Images/House/" + images[0].ToString();
             lblHouse1Price.Text = item.ElementAt(0).Price.ToString("C");
             lblHouse1Area.Text = item.ElementAt(0).Area + " SF";
             lblHouse1Location.Text = item.ElementAt(0).Location;

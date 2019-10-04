@@ -38,28 +38,28 @@ public partial class _Default : System.Web.UI.Page
                        };
 
             lblHouse1Price.Text = item.ElementAt(0).Price.ToString("C");
-            lblHouse1Area.Text = item.ElementAt(0).Area.ToString()+ " SF";
-            lblHouse1Location.Text = item.ElementAt(0).Location.ToString();
+            lblHouse1Area.Text = item.ElementAt(0).Area + " SF";
+            lblHouse1Location.Text = item.ElementAt(0).Location;
 
             lblHouse2Price.Text = item.ElementAt(1).Price.ToString("C");
-            lblHouse2Area.Text = item.ElementAt(1).Area.ToString()+ " SF";
-            lblHouse2Location.Text = item.ElementAt(1).Location.ToString();
+            lblHouse2Area.Text = item.ElementAt(1).Area + " SF";
+            lblHouse2Location.Text = item.ElementAt(1).Location;
 
             lblHouse3Price.Text = item.ElementAt(2).Price.ToString("C");
-            lblHouse3Area.Text = item.ElementAt(2).Area.ToString() + " SF";
-            lblHouse3Location.Text = item.ElementAt(2).Location.ToString();
+            lblHouse3Area.Text = item.ElementAt(2).Area + " SF";
+            lblHouse3Location.Text = item.ElementAt(2).Location;
 
             lblHouse4Price.Text = item.ElementAt(3).Price.ToString("C");
-            lblHouse4Area.Text = item.ElementAt(3).Area.ToString() + " SF";
-            lblHouse4Location.Text = item.ElementAt(3).Location.ToString();
+            lblHouse4Area.Text = item.ElementAt(3).Area + " SF";
+            lblHouse4Location.Text = item.ElementAt(3).Location;
 
             lblHouse5Price.Text = item.ElementAt(4).Price.ToString("C");
-            lblHouse5Area.Text = item.ElementAt(4).Area.ToString() + " SF";
-            lblHouse5Location.Text = item.ElementAt(4).Location.ToString();
+            lblHouse5Area.Text = item.ElementAt(4).Area + " SF";
+            lblHouse5Location.Text = item.ElementAt(4).Location;
 
             lblHouse6Price.Text = item.ElementAt(5).Price.ToString("C");
-            lblHouse6Area.Text = item.ElementAt(5).Area.ToString() + " SF";
-            lblHouse6Location.Text = item.ElementAt(5).Location.ToString();
+            lblHouse6Area.Text = item.ElementAt(5).Area + " SF";
+            lblHouse6Location.Text = item.ElementAt(5).Location;
         }
     }
 

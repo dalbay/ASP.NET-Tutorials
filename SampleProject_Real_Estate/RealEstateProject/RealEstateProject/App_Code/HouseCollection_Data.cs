@@ -97,7 +97,7 @@ public class HouseCollection_Data :IDisposable
 
         House house6 = new House();
         house6.Id = 6;
-        house6.Images = new string[] { "house5col.jpg", "house5col1.jpg", "house5col2.jpg" };
+        house6.Images = new string[] { "house6col.jpg", "house6col1.jpg", "house6col2.jpg" };
         house6.Price = 169000;
         house6.Area = 1750;
         house6.Location = "Columbia County";
