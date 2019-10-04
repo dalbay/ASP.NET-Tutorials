@@ -1,16 +1,20 @@
-﻿//var modal = document.getElementById("myModal").addEventListener("mouseover", function () {
-//    modal.style.display = "block";
-//});
-//var boxModals = document.querySelectorAll("svg.myModalBox").addEventListener("mouseover", function () {
-//    modal.style.display = "block";
-//});
+﻿var modal = document.getElementById("myModal");
 
-//function display() {
-//     modal.style.display = "block";
-//}
+var boxModals = document.querySelectorAll("svg.myModalBox");
 
-document.querySelector("h1").innerHTML = "hlghfg";
-window.alert("reading it");
+
+boxModals[0].addEventListener("mouseover", display);
+console.log(boxModals[0]);
+console.log(modal);
+
+function display() {
+    modal.style.display = "block";
+    // reset modal to display none after a short delay
+    setTimeout(function() {
+    modal.style.display = "none";
+  }, 2000);
+}
+
 
 
 
