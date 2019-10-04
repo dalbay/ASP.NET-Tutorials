@@ -8,3 +8,28 @@ span.houseProps{
     margin-right :5px;
     color:darkslateblue;
 }
+
+
+
+/* The Modal (background) */
+.modal {
+  display: block; /* Hidden by default */
+  position:absolute; /*Stay in place */
+  z-index: 1; /* Sit on top */
+  top: 250px;
+  left: 165px;
+  width: 160px;
+  height: 75px;
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  font-size: 12px;
+  border: 0.5px solid #888;
+  width: 99%;
+  line-height:11.5px;
+  padding: 6px;
+}
+
