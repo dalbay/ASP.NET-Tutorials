@@ -6,7 +6,7 @@ using System.Web;
 /// <summary>
 /// Summary description for HouseCollection_Data
 /// </summary>
-public class HouseCollection_Data
+public class HouseCollection_Data :IDisposable
 {
     List<House> Houses = new List<House>();
     public List<House> GetHouses { get => Houses; }
@@ -15,6 +15,19 @@ public class HouseCollection_Data
     {
         LoadHouses();
     }
+
+    public House GetHouse(int id)
+    {
+        House newHouse = new House();
+        foreach (var house in GetHouses)
+        {
+            if (house.Id == id)
+            {
+                newHouse = house;
+            }
+        }
+        return newHouse;
+    }
     public void LoadHouses()
     {
         House house1 = new House();
@@ -22,7 +35,7 @@ public class HouseCollection_Data
         house1.Images = new string[]{ "house1rich.jpg", "house1rich1.jpg", "house1rich2.jpg" };
         house1.Price = 120000;
         house1.Area = 1200;
-        house1.Location = "Richmond County";
+        house1.Location = "Richmond AAAA County";
         house1.Heating = "Furnace (forced air distribution system)";
         house1.AC = "Central Air Conditioners and Heat Pumps";
         house1.BuildYear = "The tax records because of the updates gives this property a 1971 build date.";
@@ -93,5 +106,10 @@ public class HouseCollection_Data
         house6.BuildYear = "The tax records because of the updates gives this property a 1960 build date.";
         house6.Description = "Property Overview - Location! Location! Location! Welcome to a little slice of Summerville Heaven. This Craftsman style home is conveniently located to schools, shopping, churches and all West Augusta and downtown have to offer. This home is waiting for the perfect family. It has been freshly painted, some new flooring added and the beautiful old original hardwoods refinished. A new metal roof was installed 2 years ago.";
         Houses.Add(house6);
+    }
+
+    public void Dispose()
+    {
+        //throw new NotImplementedException();
     }
 }

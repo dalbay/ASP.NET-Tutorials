@@ -1,4 +1,10 @@
-﻿a.infoIcon {
+﻿.infoIcon {
     display: inline-block;
-    margin-left:15px;
+    margin-left: 10px;
+}
+
+span.houseProps{
+    font-weight:bold;
+    margin-right :5px;
+    color:darkslateblue;
 }

@@ -6,7 +6,7 @@ using System.Web;
 /// <summary>
 /// Summary description for House
 /// </summary>
-public class House
+public class House : IDisposable
 {
     public int Id { get; set; }
     public string[] Images { get; set; }
@@ -41,4 +41,8 @@ public class House
         Images = images;
     }
 
+    public void Dispose()
+    {
+        throw new NotImplementedException();
+    }
 }
