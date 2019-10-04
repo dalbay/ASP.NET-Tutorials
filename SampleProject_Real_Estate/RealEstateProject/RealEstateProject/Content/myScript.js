@@ -1,13 +1,4 @@
-﻿//var modal = document.getElementById("myModal");
-
-//var boxModals = document.querySelectorAll("svg.myModalBox");
-
-//var index = 0;
-//for (var i = 0; i < boxModals.length; i++) {
-//    boxModals[i].addEventListener("mouseover", display);
-//}
-
-
+﻿
 function display(x) {
 
     var modal = document.createElement("div");
