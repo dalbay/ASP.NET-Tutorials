@@ -38,6 +38,7 @@ public partial class _Default : System.Web.UI.Page
 
             lblHouse1Price.Text = item.ElementAt(0).Price.ToString("C");
             lblHouse1Area.Text = item.ElementAt(0).Area.ToString()+ " SF";
+            //lblHouse1Location.Text = item.ElementAt(0).Location;
             lblHouse2Price.Text = item.ElementAt(1).Price.ToString("C");
             lblHouse2Area.Text = item.ElementAt(1).Area.ToString()+ " SF";
 
