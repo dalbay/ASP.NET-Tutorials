@@ -67,7 +67,7 @@ public partial class _Default : System.Web.UI.Page
             House house = houses.GetHouse(Convert.ToInt32(e.CommandArgument));
             Session["HouseSelection"] = house;
         }
-        Response.Redirect("~/County.aspx");
+        Response.Redirect("~/Details.aspx");
     }
 
 
