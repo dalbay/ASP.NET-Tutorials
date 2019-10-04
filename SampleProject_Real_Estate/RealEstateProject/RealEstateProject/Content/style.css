@@ -13,13 +13,14 @@ span.houseProps{
 
 /* The Modal (background) */
 .modal {
-  display: block; /* Hidden by default */
+  display: none; /* Hidden by default */
   position:absolute; /*Stay in place */
   z-index: 1; /* Sit on top */
   top: 250px;
   left: 165px;
   width: 160px;
   height: 75px;
+
 }
 
 /* Modal Content */
