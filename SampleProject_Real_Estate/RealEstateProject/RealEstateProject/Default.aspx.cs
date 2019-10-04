@@ -33,24 +33,33 @@ public partial class _Default : System.Web.UI.Page
                        select new House
                        {
                            Price = p.Price,
-                           Area = p.Area
+                           Area = p.Area,
+                           Location = p.Location
                        };
 
             lblHouse1Price.Text = item.ElementAt(0).Price.ToString("C");
             lblHouse1Area.Text = item.ElementAt(0).Area.ToString()+ " SF";
-            //lblHouse1Location.Text = item.ElementAt(0).Location;
+            lblHouse1Location.Text = item.ElementAt(0).Location.ToString();
+
             lblHouse2Price.Text = item.ElementAt(1).Price.ToString("C");
             lblHouse2Area.Text = item.ElementAt(1).Area.ToString()+ " SF";
+            lblHouse2Location.Text = item.ElementAt(1).Location.ToString();
 
             lblHouse3Price.Text = item.ElementAt(2).Price.ToString("C");
             lblHouse3Area.Text = item.ElementAt(2).Area.ToString() + " SF";
+            lblHouse3Location.Text = item.ElementAt(2).Location.ToString();
+
             lblHouse4Price.Text = item.ElementAt(3).Price.ToString("C");
             lblHouse4Area.Text = item.ElementAt(3).Area.ToString() + " SF";
+            lblHouse4Location.Text = item.ElementAt(3).Location.ToString();
 
             lblHouse5Price.Text = item.ElementAt(4).Price.ToString("C");
             lblHouse5Area.Text = item.ElementAt(4).Area.ToString() + " SF";
+            lblHouse5Location.Text = item.ElementAt(4).Location.ToString();
+
             lblHouse6Price.Text = item.ElementAt(5).Price.ToString("C");
             lblHouse6Area.Text = item.ElementAt(5).Area.ToString() + " SF";
+            lblHouse6Location.Text = item.ElementAt(5).Location.ToString();
         }
     }
 

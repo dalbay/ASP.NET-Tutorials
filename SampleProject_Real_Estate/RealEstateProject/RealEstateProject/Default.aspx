@@ -36,7 +36,8 @@
                           <div class="btn-group">
                               <asp:Button ID="btn1Details" CommandArgument="1" runat="server" Text="Details" CssClass="btn btn-sm btn-outline-secondary" OnCommand="btnDetails_Click" />
                           </div>
-                          <small class="text-muted">Richmond County District</small>
+                          <small class="text-muted">
+                              <asp:Label ID="lblHouse1Location" runat="server" Text="Label"></asp:Label></small>
                       </div>
                   </div>
               </div>
@@ -54,7 +55,7 @@
                           <div class="btn-group">
                               <asp:Button ID="btn2Details" CommandArgument="2" runat="server" Text="Details" CssClass="btn btn-sm btn-outline-secondary" OnCommand="btnDetails_Click" />
                           </div>
-                          <small class="text-muted">Richmond County District</small>
+                          <small class="text-muted"><asp:Label ID="lblHouse2Location" runat="server" Text="Label"></asp:Label></small>
                       </div>
                   </div>
               </div>
@@ -72,7 +73,7 @@
                           <div class="btn-group">
                               <asp:Button ID="btn3Details" CommandArgument="3" runat="server" Text="Details" CssClass="btn btn-sm btn-outline-secondary" OnCommand="btnDetails_Click" />
                           </div>
-                          <small class="text-muted">Richmond County District</small>
+                          <small class="text-muted"><asp:Label ID="lblHouse3Location" runat="server" Text="Label"></asp:Label></small>
                       </div>
                   </div>
               </div>
@@ -91,7 +92,7 @@
                           <div class="btn-group">
                               <asp:Button ID="btn4Details" CommandArgument="3" runat="server" Text="Details" CssClass="btn btn-sm btn-outline-secondary" OnCommand="btnDetails_Click" />
                           </div>
-                          <small class="text-muted">Columbia County District</small>
+                          <small class="text-muted"><asp:Label ID="lblHouse4Location" runat="server" Text="Label"></asp:Label></small>
                       </div>
                   </div>
               </div>
@@ -109,7 +110,7 @@
                           <div class="btn-group">
                               <asp:Button ID="btn5Details" CommandArgument="5" runat="server" Text="Details" CssClass="btn btn-sm btn-outline-secondary" OnCommand="btnDetails_Click" />
                           </div>
-                          <small class="text-muted">Columbia County District</small>
+                          <small class="text-muted"><asp:Label ID="lblHouse5Location" runat="server" Text="Label"></asp:Label></small>
                       </div>
                   </div>
               </div>
@@ -127,7 +128,7 @@
                           <div class="btn-group">
                               <asp:Button ID="btn6Details" CommandArgument="6" runat="server" Text="Details" CssClass="btn btn-sm btn-outline-secondary" OnCommand="btnDetails_Click" />
                           </div>
-                          <small class="text-muted">Columbia County District</small>
+                          <small class="text-muted"><asp:Label ID="lblHouse6Location" runat="server" Text="Label"></asp:Label></small>
                       </div>
                   </div>
               </div>
