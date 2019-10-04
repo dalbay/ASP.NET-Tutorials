@@ -42,13 +42,16 @@ public partial class County : System.Web.UI.Page
 
             // "Images/House/" + images[0].ToString();
             lblHouse1Price.Text = item.ElementAt(0).Price.ToString("C");
-            lblHouse1Area.Text = item.ElementAt(0).Area.ToString() + " SF";
+            lblHouse1Area.Text = item.ElementAt(0).Area + " SF";
             lblHouse1Location.Text = item.ElementAt(0).Location;
+
             lblHouse2Price.Text = item.ElementAt(1).Price.ToString("C");
-            lblHouse2Area.Text = item.ElementAt(1).Area.ToString() + " SF";
+            lblHouse2Area.Text = item.ElementAt(1).Area + " SF";
+            lblHouse2Location.Text = item.ElementAt(1).Location;
 
             lblHouse3Price.Text = item.ElementAt(2).Price.ToString("C");
-            lblHouse3Area.Text = item.ElementAt(2).Area.ToString() + " SF";
+            lblHouse3Area.Text = item.ElementAt(2).Area + " SF";
+            lblHouse3Location.Text = item.ElementAt(2).Location;
         }
     }
     protected void btnDetails_Click(object sender, CommandEventArgs e)
