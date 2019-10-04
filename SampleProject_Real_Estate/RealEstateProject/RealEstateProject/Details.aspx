@@ -21,14 +21,13 @@
                 <div class="card mb-8 shadow-sm">
                     <img src="<%:imageUrl%>" height="450" alt="House For Sale Image" />
                 </div>
-                <div class="card mb-8 shadow-sm">
+                <div class="details card mb-8 shadow-sm">
                     <p><span class="houseProps">Price :</span><asp:Label ID="lblPrice" runat="server" Text="Label"></asp:Label></p>
                     <p><span class="houseProps">Area : </span><asp:Label ID="lblArea" runat="server" Text="Label"></asp:Label></p>
                     <p><span class="houseProps">Location : </span><asp:Label ID="lblLocation" runat="server" Text="Label"></asp:Label></p>
                     <p><span class="houseProps">Heating & AC : </span><asp:Label ID="lblAC" runat="server" Text="Label"></asp:Label></p>
                     <p><span class="houseProps">Year Build :</span><asp:Label ID="lblBuildYear" runat="server" Text="Label"></asp:Label></p>
                     <p><span class="houseProps">Description :</span> <asp:Label ID="lblDescription" runat="server" Text="Label"></asp:Label></p>
-
                 </div>
             </div>
             <div class="col-md-4">

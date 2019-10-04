@@ -3,13 +3,6 @@
     margin-left: 10px;
 }
 
-span.houseProps{
-    font-weight:bold;
-    margin-right :5px;
-    color:darkslateblue;
-}
-
-
 
 /* The Modal (background) */
 .modal {
@@ -34,3 +27,13 @@ span.houseProps{
   padding: 6px;
 }
 
+/* Details Page */
+.details {
+    padding:20px;
+}
+
+.details span.houseProps{
+    font-weight:bold;
+    margin-right :5px;
+    color:darkslateblue;
+}
