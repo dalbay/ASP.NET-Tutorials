@@ -71,4 +71,11 @@ public partial class _Default : System.Web.UI.Page
     }
 
 
+
+    protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        string selectedValue = DropDownList1.SelectedItem.Value;
+        Response.Redirect(string.Format("~/County.aspx?ID={0}", selectedValue));
+    }
+
 }

@@ -35,7 +35,7 @@ public class HouseCollection_Data :IDisposable
         house1.Images = new string[]{ "house1rich.jpg", "house1rich1.jpg", "house1rich2.jpg" };
         house1.Price = 120000;
         house1.Area = 1200;
-        house1.Location = "Richmond AAAA County";
+        house1.Location = "Richmond County";
         house1.Heating = "Furnace (forced air distribution system)";
         house1.AC = "Central Air Conditioners and Heat Pumps";
         house1.BuildYear = "The tax records because of the updates gives this property a 1971 build date.";
