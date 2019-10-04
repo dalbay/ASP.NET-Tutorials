@@ -29,6 +29,9 @@
                 <a href="/Default.aspx" class="navbar-brand d-flex align-items-center">
                     <strong>My Home Real Estate</strong>
                 </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="true" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
             </div>
         </div>
     </header>
