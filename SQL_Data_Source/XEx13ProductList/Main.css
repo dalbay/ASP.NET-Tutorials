@@ -1,0 +1,42 @@
+﻿body {
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: 85%;
+    width: 700px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 2px solid black;
+    background-color: white;
+}
+section 
+{
+    padding: 1em;
+    margin-top: .5em;
+}
+#ddlCategory
+{
+    width: 130px;
+}
+#dlProducts
+{
+    margin-top: 1.2em;
+    border: 1px solid #999999;
+    
+}
+.col1
+{
+    width: 100px;
+}
+.col2
+{
+    width: 200px;
+}
+.col3
+{
+    width: 80px;
+    text-align: right;
+}
+.col4
+{
+    width: 80px;
+    text-align: right;
+}
