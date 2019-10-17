@@ -14,10 +14,32 @@
     <section>
     <form id="form1" runat="server">
         <label>Choose a state:&nbsp;</label>
-        <asp:DropDownList ID="ddlState" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="StateName" DataValueField="StateCode">
-
+        <asp:DropDownList ID="ddlState" runat="server" AutoPostBack="True"
+           DataSourceID="SqlDataSource3" DataTextField="StateName" DataValueField="StateCode">
         </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:HalloweenConnectionString %>" SelectCommand="SELECT [StateCode], [StateName] FROM [States] ORDER BY [StateName]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:HalloweenConnectionString %>" SelectCommand="SELECT [StateCode], [StateName] FROM [States] ORDER BY [StateName]">
+        </asp:SqlDataSource>
+        <asp:DataList ID="dlCustomers" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataSourceID="SqlDataSource4" GridLines="Both">
+            <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
+            <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
+            <HeaderTemplate>
+                <asp:Label ID="Label1" runat="server" Text="First Name" Width="175px"></asp:Label>
+                <asp:Label ID="Label2" runat="server" Text="Last Name" Width="175px"></asp:Label>
+                <asp:Label ID="Label3" runat="server" Text="Email" Width="250px"></asp:Label>
+            </HeaderTemplate>
+            <ItemStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
+            <ItemTemplate>
+                <asp:Label ID="lblFirstName" runat="server" Text='<%# Eval("FirstName") %>' Width="175px"></asp:Label>
+                <asp:Label ID="lblLastName" runat="server" Text='<%# Eval("LastName") %>' Width="175px"></asp:Label>
+                <asp:Label ID="lblEmail" runat="server" Text='<%# Eval("Email") %>' Width="250px"></asp:Label>
+            </ItemTemplate>
+            <SelectedItemStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
+        </asp:DataList>
+        <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:HalloweenConnectionString %>" SelectCommand="SELECT [LastName], [FirstName], [Email] FROM [Customers] WHERE ([State] = @State) ORDER BY [LastName], [FirstName] DESC">
+            <SelectParameters>
+                <asp:ControlParameter ControlID="ddlState" DefaultValue="" Name="State" PropertyName="SelectedValue" Type="String" />
+            </SelectParameters>
+        </asp:SqlDataSource>
 <!----------------------------------------------------------------------------->
         <label>Choose a category:&nbsp;</label>
         <asp:DropDownList ID="ddlCategory" runat="server" 
@@ -31,6 +53,8 @@
         </asp:SqlDataSource>
         <asp:DataList ID="dlProducts" runat="server" DataKeyField="ProductID" 
             DataSourceID="SqlDataSource2" CellPadding="4">
+            <AlternatingItemStyle BackColor="#E3EAEB" />
+            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
             <HeaderTemplate>
                 <table>
                     <tr>
@@ -46,20 +70,16 @@
                 <table>
                     <tr>
                         <td class="col1">
-                            <asp:Label ID="lblID" runat="server" 
-                                Text='<%# Eval("ProductID") %>' />
+                            <asp:Label ID="lblID" runat="server" Text='<%# Eval("ProductID") %>' />
                         </td>
                         <td class="col2">
-                            <asp:Label ID="lblName" runat="server" 
-                                Text='<%# Eval("Name") %>' />
+                            <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>' />
                         </td>
                         <td class="col3">
-                            <asp:Label ID="lblUnitPrice" runat="server" 
-                                Text='<%# Eval("UnitPrice", "{0:C}") %>' />
+                            <asp:Label ID="lblUnitPrice" runat="server" Text='<%# Eval("UnitPrice", "{0:C}") %>' />
                         </td>
                         <td class="col4">
-                            <asp:Label ID="lblOnHand" runat="server" 
-                                Text='<%# Eval("OnHand") %>' />
+                            <asp:Label ID="lblOnHand" runat="server" Text='<%# Eval("OnHand") %>' />
                         </td>
                         <td class="col4">
                             <asp:Label ID="lblTotal" runat="server" Text='<%# Eval("Total", "{0:C}") %>'></asp:Label>
@@ -67,8 +87,6 @@
                     </tr>
                 </table>
             </ItemTemplate>
-            <AlternatingItemStyle BackColor="#E3EAEB" />
-            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
         </asp:DataList>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:HalloweenConnectionString %>" 

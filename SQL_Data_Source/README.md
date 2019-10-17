@@ -105,47 +105,47 @@
 ![datasource img](Images/dataSource7.png)  
 12.	End template-editing mode, and review the aspx code for the two new columns. Then, run the application to be sure it looks as shown above.  
 ```ASP.NET
-        <asp:DataList ID="dlProducts" runat="server" DataKeyField="ProductID" 
-            DataSourceID="SqlDataSource2" CellPadding="4">
-            <HeaderTemplate>
-                <table>
-                    <tr>
-                        <td class="col1">ID</td>
-                        <td class="col2">Product</td>
-                        <td class="col3">Unit Price</td>
-                        <td class="col4">On Hand</td>
-                        <td class="col4">Total</td>
-                    </tr>
-                </table>
-            </HeaderTemplate>
-            <ItemTemplate>
-                <table>
-                    <tr>
-                        <td class="col1">
-                            <asp:Label ID="lblID" runat="server" 
-                                Text='<%# Eval("ProductID") %>' />
-                        </td>
-                        <td class="col2">
-                            <asp:Label ID="lblName" runat="server" 
-                                Text='<%# Eval("Name") %>' />
-                        </td>
-                        <td class="col3">
-                            <asp:Label ID="lblUnitPrice" runat="server" 
-                                Text='<%# Eval("UnitPrice", "{0:C}") %>' />
-                        </td>
-                        <td class="col4">
-                            <asp:Label ID="lblOnHand" runat="server" 
-                                Text='<%# Eval("OnHand") %>' />
-                        </td>
-                        <td class="col4">
-                            <asp:Label ID="lblTotal" runat="server" Text='<%# Eval("Total", "{0:C}") %>'></asp:Label>
-                        </td>
-                    </tr>
-                </table>
-            </ItemTemplate>
-            <AlternatingItemStyle BackColor="#E3EAEB" />
-            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-        </asp:DataList>
+	<asp:DataList ID="dlProducts" runat="server" DataKeyField="ProductID" 
+		DataSourceID="SqlDataSource2" CellPadding="4">
+		<HeaderTemplate>
+			<table>
+				<tr>
+					<td class="col1">ID</td>
+					<td class="col2">Product</td>
+					<td class="col3">Unit Price</td>
+					<td class="col4">On Hand</td>
+					<td class="col4">Total</td>
+				</tr>
+			</table>
+		</HeaderTemplate>
+		<ItemTemplate>
+			<table>
+				<tr>
+					<td class="col1">
+						<asp:Label ID="lblID" runat="server" 
+							Text='<%# Eval("ProductID") %>' />
+					</td>
+					<td class="col2">
+						<asp:Label ID="lblName" runat="server" 
+							Text='<%# Eval("Name") %>' />
+					</td>
+					<td class="col3">
+						<asp:Label ID="lblUnitPrice" runat="server" 
+							Text='<%# Eval("UnitPrice", "{0:C}") %>' />
+					</td>
+					<td class="col4">
+						<asp:Label ID="lblOnHand" runat="server" 
+							Text='<%# Eval("OnHand") %>' />
+					</td>
+					<td class="col4">
+						<asp:Label ID="lblTotal" runat="server" Text='<%# Eval("Total", "{0:C}") %>'></asp:Label>
+					</td>
+				</tr>
+			</table>
+		</ItemTemplate>
+		<AlternatingItemStyle BackColor="#E3EAEB" />
+		<HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+	</asp:DataList>
 ```
 **Exercise - Enhance the Product List application**  
 In this exercise, you’ll create an application that lets the user select a state from a drop-down list and then displays the customers in that state in a data list.  
@@ -156,7 +156,15 @@ Create the drop-down list and its data source
 3. Configure the data source for the drop-down list so it includes the StateCode and StateName columns from the States tables, sorted by state name. Be sure to store the connection in the web.config file.
 4. Bind the drop-down list to the data source so the state name is displayed in the list and the state code is returned by the SelectedValue property of the list.
 5. Change the name of the drop-down list to ddlState and set its AutoPostBack property to True.  
-![datasource img](Images/dataSource9.png)   
+![datasource img](Images/dataSource9.png) 
+```ASP.NET
+	<label>Choose a state:&nbsp;</label>
+	<asp:DropDownList ID="ddlState" runat="server" AutoPostBack="True"
+	   DataSourceID="SqlDataSource3" DataTextField="StateName" DataValueField="StateCode">
+	</asp:DropDownList>
+	<asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:HalloweenConnectionString %>" SelectCommand="SELECT [StateCode], [StateName] FROM [States] ORDER BY [StateName]">
+	</asp:SqlDataSource>
+```  
 Create another data source and bind it to a data list
 6. Add a DataList control to the form, and change its name to dlCustomers.
 7. Configure the data source for the data list so it uses the connection string that’s in the web.config file, so it selects the LastName, FirstName, and Email columns from the Customers table, sorted by the first name within the last name. The data source should select only the customers in the state that’s selected from the drop-down list.
