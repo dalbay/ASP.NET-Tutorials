@@ -81,5 +81,18 @@
 ```ASP
 <%# Eval("Name") %>
 <%# Bind("UnitPrice", "{0:C}") %>
-```
+```  
+#### Exercise Project
+Update the data source
+1. Open the XEx13ProductList application in your exercises_extra directory. This is the Product List application that was present in chapter 13 of the book.
+2. Select the Configure Data Source command from the smart tag menu of the SQL data source for the data list control to start the Configure Data Source wizard.  
+![datasource img](images/dataSource1.png)  
+3. Click the Next button when the first dialog box is displayed to use the current connection, and click the Next button again in the second dialog box to enter a custom SQL statement.  
+![datasource img](images/dataSource2.png) 
+4. The Select tab in the next dialog box will contain the current Select statement. Now, click the Query Builder button to display the Query Builder.
+5. Use the grid pane to add a calculated column that multiplies the UnitPrice column by the OnHand column, and assign an alias of Total to this column. Then, accept this change to return to the Configure Data Source dialog box.
+6. Click the Next button, and then click the Next button again in the dialog box that lets you define parameters.
+7. Test the query in the last Configure Data Source dialog box, and then click the Finish button.
+8. When you’re asked if you want to regenerate the DataList ItemTemplate and DataKeyField, click No. Notice that the data list hasn’t changed, but the data source has.
+
 ---
