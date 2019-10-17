@@ -97,10 +97,56 @@
 7. Test the query in the last Configure Data Source dialog box, and then click the Finish button.
 8. When you’re asked if you want to regenerate the DataList ItemTemplate and DataKeyField, click No. Notice that the data list hasn’t changed, but the data source has.  
 **Update the data list**  
-9. Display the data list in template-editing mode, and add a column to the Item template. To do that, position the mouse pointer above the last column so a down-arrow is displayed and click to select that column. Then, right-click the tab that identifies the column, and select InsertColumn to the Right from the shortcut menu that’s displayed.
-10.	Add a label to the new column, and assign the ID lblTotal to it. Then, bind it to the Total field of the data source and apply the currency format.
-11.	Display the Header template, add another column, and enter the text “Total” in the column.
-12.	End template-editing mode, and review the aspx code for the two new columns. Then, run the application to be sure it looks as shown above.
+9. Display the data list in template-editing mode, and add a column to the Item template. To do that, position the mouse pointer above the last column so a down-arrow is displayed and click to select that column. Then, right-click the tab that identifies the column, and select InsertColumn to the Right from the shortcut menu that’s displayed.  
+![datasource img](images/dataSource5.png)  
+10.	Add a label to the new column, and assign the ID lblTotal to it. Then, bind it to the Total field of the data source and apply the currency format.  
+![datasource img](images/dataSource6.png)  
+11.	Display the Header template, add another column, and enter the text “Total” in the column.  
+![datasource img](images/dataSource7.png)  
+12.	End template-editing mode, and review the aspx code for the two new columns. Then, run the application to be sure it looks as shown above.  
+```ASP.NET
+        <asp:DataList ID="dlProducts" runat="server" DataKeyField="ProductID" 
+            DataSourceID="SqlDataSource2" CellPadding="4">
+            <HeaderTemplate>
+                <table>
+                    <tr>
+                        <td class="col1">ID</td>
+                        <td class="col2">Product</td>
+                        <td class="col3">Unit Price</td>
+                        <td class="col4">On Hand</td>
+                        <td class="col4">Total</td>
+                    </tr>
+                </table>
+            </HeaderTemplate>
+            <ItemTemplate>
+                <table>
+                    <tr>
+                        <td class="col1">
+                            <asp:Label ID="lblID" runat="server" 
+                                Text='<%# Eval("ProductID") %>' />
+                        </td>
+                        <td class="col2">
+                            <asp:Label ID="lblName" runat="server" 
+                                Text='<%# Eval("Name") %>' />
+                        </td>
+                        <td class="col3">
+                            <asp:Label ID="lblUnitPrice" runat="server" 
+                                Text='<%# Eval("UnitPrice", "{0:C}") %>' />
+                        </td>
+                        <td class="col4">
+                            <asp:Label ID="lblOnHand" runat="server" 
+                                Text='<%# Eval("OnHand") %>' />
+                        </td>
+                        <td class="col4">
+                            <asp:Label ID="lblTotal" runat="server" Text='<%# Eval("Total", "{0:C}") %>'></asp:Label>
+                        </td>
+                    </tr>
+                </table>
+            </ItemTemplate>
+            <AlternatingItemStyle BackColor="#E3EAEB" />
+            <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
+        </asp:DataList>
+```
 
 
 ---
