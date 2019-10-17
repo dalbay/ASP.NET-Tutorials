@@ -13,6 +13,23 @@
       providerName="System.Data.SqlClient" />
   </connectionStrings>
 ```
+- ADO.NET provides two basic ways to retrieve data from a database. You can either retrieve the data into a **dataset**, which retrains a copy of the data in memory so it can be accessed multiple times,and updated if necessary. Or, you can retreive the data using a **data reader**, which lets you retreive the data in forward-only, read-only fashion.
+- The **DataSourceMode** property lets you specify that data should be retreived using a data reader rather than being stored in a dataset.  
+```ADO
+   <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+		ConnectionString="<%$ ConnectionStrings:HalloweenConnection %>" 
+		DataSourceMode="DataReader"
+		SelectCommand="SELECT [ProductID], [UnitPrice] FROM [Categories]">
+	</asp:SqlDataSource>
+```
+- The data source **EnableCaching** property lets you specify that data should be stored in cache storage for a specific period of time.  
+```ADO
+   <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
+		ConnectionString="<%$ ConnectionStrings:HalloweenConnection %>" 
+		EnableCaching="True" CacheDuration="60"
+		SelectCommand="SELECT [ProductID], [UnitPrice] FROM [Categories]">
+	</asp:SqlDataSource>
+```
 - Define a Select statement in the dialog box.
 - When you create a WHERE clause, the wizard creates one or more select parameters that provide the values used by the WHERE clause. Each SqlDataSource control that includes select parameters is defined by a SqlDataSource element that includes a child element named SelectParameters. 
 ```ASP
