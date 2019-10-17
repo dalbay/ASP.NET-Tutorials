@@ -82,27 +82,27 @@
 <%# Eval("Name") %>
 <%# Bind("UnitPrice", "{0:C}") %>
 ```  
-#### Exercise Project
-**Update the data source**  
+**Exercise - Project**  
+#### Update the data source**  
 1. Open the XEx13ProductList application in your exercises_extra directory. This is the Product List application that was present in chapter 13 of the book.
 2. Select the Configure Data Source command from the smart tag menu of the SQL data source for the data list control to start the Configure Data Source wizard.  
-![datasource img](images/dataSource1.png)  
+![datasource img](Images/dataSource1.png)  
 3. Click the Next button when the first dialog box is displayed to use the current connection, and click the Next button again in the second dialog box to enter a custom SQL statement.  
-![datasource img](images/dataSource2.png) 
+![datasource img](Images/dataSource2.png) 
 4. The Select tab in the next dialog box will contain the current Select statement. Now, click the Query Builder button to display the Query Builder.  
-![datasource img](images/dataSource3.png)   
+![datasource img](Images/dataSource3.png)   
 5. Use the grid pane to add a calculated column that multiplies the UnitPrice column by the OnHand column, and assign an alias of Total to this column. Then, accept this change to return to the Configure Data Source dialog box.
 6. Click the Next button, and then click the Next button again in the dialog box that lets you define parameters.  
-![datasource img](images/dataSource4.png)  
+![datasource img](Images/dataSource4.png)  
 7. Test the query in the last Configure Data Source dialog box, and then click the Finish button.
 8. When you’re asked if you want to regenerate the DataList ItemTemplate and DataKeyField, click No. Notice that the data list hasn’t changed, but the data source has.  
-**Update the data list**  
+#### Update the data list
 9. Display the data list in template-editing mode, and add a column to the Item template. To do that, position the mouse pointer above the last column so a down-arrow is displayed and click to select that column. Then, right-click the tab that identifies the column, and select InsertColumn to the Right from the shortcut menu that’s displayed.  
-![datasource img](images/dataSource5.png)  
+![datasource img](Images/dataSource5.png)  
 10.	Add a label to the new column, and assign the ID lblTotal to it. Then, bind it to the Total field of the data source and apply the currency format.  
 ![datasource img](images/dataSource6.png)  
 11.	Display the Header template, add another column, and enter the text “Total” in the column.  
-![datasource img](images/dataSource7.png)  
+![datasource img](Images/dataSource7.png)  
 12.	End template-editing mode, and review the aspx code for the two new columns. Then, run the application to be sure it looks as shown above.  
 ```ASP.NET
         <asp:DataList ID="dlProducts" runat="server" DataKeyField="ProductID" 
