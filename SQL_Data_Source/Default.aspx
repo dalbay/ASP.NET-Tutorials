@@ -13,6 +13,12 @@
     </header>
     <section>
     <form id="form1" runat="server">
+        <label>Choose a state:&nbsp;</label>
+        <asp:DropDownList ID="ddlState" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource3" DataTextField="StateName" DataValueField="StateCode">
+
+        </asp:DropDownList>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:HalloweenConnectionString %>" SelectCommand="SELECT [StateCode], [StateName] FROM [States] ORDER BY [StateName]"></asp:SqlDataSource>
+<!----------------------------------------------------------------------------->
         <label>Choose a category:&nbsp;</label>
         <asp:DropDownList ID="ddlCategory" runat="server" 
             DataSourceID="SqlDataSource1" DataTextField="LongName" 
@@ -32,6 +38,7 @@
                         <td class="col2">Product</td>
                         <td class="col3">Unit Price</td>
                         <td class="col4">On Hand</td>
+                        <td class="col4">Total</td>
                     </tr>
                 </table>
             </HeaderTemplate>
@@ -54,6 +61,9 @@
                             <asp:Label ID="lblOnHand" runat="server" 
                                 Text='<%# Eval("OnHand") %>' />
                         </td>
+                        <td class="col4">
+                            <asp:Label ID="lblTotal" runat="server" Text='<%# Eval("Total", "{0:C}") %>'></asp:Label>
+                        </td>
                     </tr>
                 </table>
             </ItemTemplate>
@@ -62,10 +72,7 @@
         </asp:DataList>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" 
             ConnectionString="<%$ ConnectionStrings:HalloweenConnectionString %>" 
-            SelectCommand="SELECT [ProductID], [Name], [UnitPrice], [OnHand]
-                FROM [Products]
-                WHERE ([CategoryID] = @CategoryID) 
-                ORDER BY [ProductID]">
+            SelectCommand="SELECT ProductID, Name, UnitPrice, OnHand, UnitPrice * OnHand AS Total FROM Products WHERE (CategoryID = @CategoryID) ORDER BY ProductID">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ddlCategory" Name="CategoryID" 
                  PropertyName="SelectedValue" Type="String" />
