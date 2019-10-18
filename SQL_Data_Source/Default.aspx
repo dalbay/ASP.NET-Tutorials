@@ -13,12 +13,17 @@
     </header>
     <section>
     <form id="form1" runat="server">
+	
         <label>Choose a state:&nbsp;</label>
+		
+		<!--Drop-Down List for States-->
         <asp:DropDownList ID="ddlState" runat="server" AutoPostBack="True"
            DataSourceID="SqlDataSource3" DataTextField="StateName" DataValueField="StateCode">
         </asp:DropDownList>
+		<!--Data Source for the States DDL-->
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:HalloweenConnectionString %>" SelectCommand="SELECT [StateCode], [StateName] FROM [States] ORDER BY [StateName]">
         </asp:SqlDataSource>
+		
         <asp:DataList ID="dlCustomers" runat="server" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellPadding="3" CellSpacing="2" DataSourceID="SqlDataSource4" GridLines="Both">
             <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
             <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
@@ -35,6 +40,7 @@
             </ItemTemplate>
             <SelectedItemStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
         </asp:DataList>
+		
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:HalloweenConnectionString %>" SelectCommand="SELECT [LastName], [FirstName], [Email] FROM [Customers] WHERE ([State] = @State) ORDER BY [LastName], [FirstName] DESC">
             <SelectParameters>
                 <asp:ControlParameter ControlID="ddlState" DefaultValue="" Name="State" PropertyName="SelectedValue" Type="String" />
