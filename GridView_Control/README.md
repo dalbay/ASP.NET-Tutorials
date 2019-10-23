@@ -15,7 +15,7 @@
 - by default, the gridview control displays one column for each column in the data source.
 - to define the field that you want to display in the gridview control, display the ***Fields*** dialog box by selecting the ***Edit Columns*** command from the control's smart tag menu. 
 - another way to add a field to a gridview control is to use the ***Add New Column*** command in the smart tag menu.
-![GridView Fields](/Images/gridviewImg1.png)
+![GridView Fields](Images/gridviewImg1.png)
 - commonly used ***Field Properties***:
   - DataField
   - DataFormatString
