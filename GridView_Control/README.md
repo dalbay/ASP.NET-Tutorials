@@ -49,7 +49,7 @@
 #### How to use Bootstrap CSS classes
 - since ASP.NET renders a gridview control as an HTML table, you can use the Bootstrap CSS classes for HTML tables to style GridView controls.
 - for the Bootstrap table classes to be applied properly, an HTML table must have thead and tbody elements. Because ASP.NET doesn't render these elements for a gridview control by default, you must add code to the control's ***PreRender*** event that sets the value of the control's ***HeaderRow*** property to ***TableHeader***.
-![GridView Bootstrap](/Images/gridviewImg2.png)
+![GridView Bootstrap](Images/gridviewImg2.png)
 The ***PreRender event handler*** for the GridView Control:  
 ```C#
 	protected void grdCategories_PreRender(object sender,
@@ -63,7 +63,7 @@ The ***PreRender event handler*** for the GridView Control:
 #### How to enable Sorting
 - to enable sorting, set the ***AllowSorting*** property to True. Then, add a ***SortExpression*** property to each column you want to allow sorting for. 
 - for sorting to work, the ***DataSourceMode*** property of the data source must be set to ***DataSet*** mode, which is by default.
-![GridView Sorting](/Images/gridviewImg3.png)
+![GridView Sorting](Images/gridviewImg3.png)
 #### How to enable Paging
 - to enable paging, set the ***AllowPaging*** property to True. Then, add a ***PagerStyle*** element to define the appearance of the pager controls. You can also add a ***PagerSettings*** element.
 - for paging to work, the ***DataSourceMode*** property of the data source must be set to ***DataSet*** mode, which is by default.  
@@ -123,7 +123,7 @@ The ***PreRender event handler*** for the GridView Control:
 				   LastPageText="Last" />
 ```  
 The resulting pager area:
-![GridView Paging](/Images/gridviewImg4.png)
+![GridView Paging](Images/gridviewImg4.png)
 #### Example: A list application that uses a GridView control:
 ```ASP
 <body>
@@ -195,7 +195,7 @@ The event handler for the PreRender event of the GridView control:
 			TableRowSection.TableHeader;
 	}
 ```  
-![GridView Example](/Images/gridviewImg5.png)
+![GridView Example](Images/gridviewImg5.png)
 <br/>
 
 
