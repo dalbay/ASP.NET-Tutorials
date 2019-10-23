@@ -60,12 +60,44 @@ The ***PreRender event handler*** for the GridView Control:
 				TableRowSection.TableHeader;
 	}
 ```
-#### How to enable sorting
+#### How to enable Sorting
 - to enable sorting, set the ***AllowSorting*** property to True. Then, add a ***SortExpression*** property to each column you want to allow sorting for. 
 - for sorting to work, the ***DataSourceMode*** property of the data source must be set to ***DataSet*** mode, which is by default.
 ![GridView Sorting](images/gridviewImg3.png)
-
-
+#### How to enable Paging
+- to enable paging, set the ***AllowPaging*** property to True. Then, add a ***PagerStyle*** element to define the appearance of the pager controls. You can also add a ***PagerSettings*** element.
+- for paging to work, the ***DataSourceMode*** property of the data source must be set to ***DataSet*** mode, which is by default.  
+```ASP.NET
+	<asp:GridView ID="GridView1" runat="server" AllowPaging="true"
+		AutoGenerateColumns="False" DataKeyNames="CategoryID"
+		DataSourceID="SqlDataSource1" UseAccessibleHeader="true" 
+		CssClass="table table-bordered table-striped table-condensed"
+		OnPreRender="GridView1_PreRender">
+		<Columns>
+			<asp:BoundField DataField="ProductID" HeaderText="ID" 
+				ReadOnly="True">
+				<ItemStyle CssClass="col-xs-1" />
+			</asp:BoundField>
+			<asp:BoundField DataField="Name" HeaderText="Name">
+				<ItemStyle CssClass="col-xs-4" />
+			</asp:BoundField>
+			<asp:BoundField DataField="CategoryID"
+				HeaderText="Category"> 
+				<ItemStyle CssClass="col-xs-2" />
+			</asp:BoundField>
+			<asp:BoundField DataField="UnitPrice"
+				HeaderText="Unit Price" DataFormatString="{0:c}">
+				<ItemStyle CssClass="col-xs-2 text-right" /> 
+				<HeaderStyle CssClass="text-right" />
+			</asp:BoundField>
+			<asp:BoundField DataField="OnHand" HeaderText="On Hand"> 
+				<ItemStyle CssClass="col-xs-2 text-right" />
+				<HeaderStyle CssClass="text-right" />
+			</asp:BoundField>
+		</Columns>
+		<PagerStyle CssClass="pagerStyle" HorizontalAlign="Center" />
+	</asp:GridView>
+```
 
 
 
