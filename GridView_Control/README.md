@@ -49,7 +49,10 @@
 #### How to use Bootstrap CSS classes
 - since ASP.NET renders a gridview control as an HTML table, you can use the Bootstrap CSS classes for HTML tables to style GridView controls.
 - for the Bootstrap table classes to be applied properly, an HTML table must have thead and tbody elements. Because ASP.NET doesn't render these elements for a gridview control by default, you must add code to the control's ***PreRender*** event that sets the value of the control's ***HeaderRow*** property to ***TableHeader***.
-
+![GridView Bootstrap](images/gridviewImg2.png)
+#### How to enable sorting
+- to enable sorting, set the ***AllowSorting*** property to True. Then, add a ***SortExpression*** property to each column you want to allow sorting for. 
+- for sorting to work, the ***DataSourceMode*** property of the data source must be set to ***DataSet*** mode, which is by default.
 
 
 
