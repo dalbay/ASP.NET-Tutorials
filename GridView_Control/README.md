@@ -203,5 +203,19 @@ The event handler for the PreRender event of the GridView control:
 #### How to work with Command Fields
 - a ***command field*** adds buttons that let you edit, delete, or select data.
 - the CommandField element also provides for an Insert button, but the GridView control doesn't directly support insert operations.
+![GridView command field](Images/gridviewImg6.png)
+- Properties of the ***CommandField*** element:
+  - ButtonType - specifies the type of button displayed in the command field. Valid options are Button, Link, or Image 
+  - CausesValidation - specifies whether validation should be performed if the user clicks the button.
+  - ValidationGroup - specifies the name of the group to be validated if CausesValidation is true
+- Properties that show buttons and set the text or images they display:
+Button	| Show	| Text	| Image
+--- | --- | --- | ---
+Cancel	| ShowCancelButton	| CancelText |	CancelImage
+Delete	| ShowDeleteButton	| DeleteText |	DeleteImage
+Edit	| ShowEditButton	| EditText | 	EditImage
+Select	| ShowSelectButton	| SelectText |	SelectImage
+Update	| n/a			| UpdateText |	UpdateImage
+
 
 
