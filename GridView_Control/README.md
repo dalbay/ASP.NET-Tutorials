@@ -185,7 +185,18 @@ The resulting pager area:
 		</main>
 	</div>
 	</body>
+```  
+The event handler for the PreRender event of the GridView control:
+```C#
+	protected void grdProducts_PreRender(object sender,
+		EventArgs e)
+	{
+		grdProducts.HeaderRow.TableSection =
+			TableRowSection.TableHeader;
+	}
 ```
+<br/>
+
 
 
 
