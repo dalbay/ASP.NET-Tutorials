@@ -98,6 +98,32 @@ The ***PreRender event handler*** for the GridView Control:
 		<PagerStyle CssClass="pagerStyle" HorizontalAlign="Center" />
 	</asp:GridView>
 ```
+- Properties of the GridView Control that affect paging:
+  - AllowPaging - Set to True to enable paging.
+  - PageSize - Specifies the number of rows to display on each page. The default is 10. 
+- Properties of the PagerSettings element:
+  - Mode - controls what buttons are displayed in the pager area
+  - FirstPageText - the text to display for the first page button. the default is &lt;&lt; which displays as <<
+  - FirstPageImageUrl 
+  - PreviousPageText
+  - PreviousPageImageUrl
+  - NextPageText
+  - NextPageImageUrl
+  - LastPageText
+  - LastPageImageUrl
+  - PageButtonCount
+  - Position
+  - Visible
+##### Example - A PagerSettings element:
+```ASP.NET
+<PagerSettings Mode="NextPreviousFirstLast" 
+               NextPageText="Next"
+               PreviousPageText="Prev"
+               FirstPageText="First"
+               LastPageText="Last" />
+```  
+The resulting pager area:
+![GridView Paging](images/gridviewImg4.png)
 
 
 
