@@ -216,6 +216,14 @@ Delete	| ShowDeleteButton	| DeleteText |	DeleteImage
 Edit	| ShowEditButton	| EditText | 	EditImage
 Select	| ShowSelectButton	| SelectText |	SelectImage
 Update	| n/a			| UpdateText |	UpdateImage
-
+- Code that defines two command fields:
+```ASP
+<asp:CommandField ButtonType="Button"
+    ShowEditButton="True" />
+<asp:CommandField ButtonType="Button"
+    ShowDeleteButton="True" 
+    CausesValidation="False" />
+```  
+#### How to use events raised by the GridView Control
 
 
