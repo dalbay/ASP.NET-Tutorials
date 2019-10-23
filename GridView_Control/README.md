@@ -198,6 +198,10 @@ The event handler for the PreRender event of the GridView control:
 ![GridView Example](Images/gridviewImg5.png)
 <br/>
 
-
+### How to Update GridView Data
+- Before you can set up the ability to update data in the underlying data source with little additional code, you must configure the data source with Update, Delete, and Insert statements. 
+#### How to work with Command Fields
+- a ***command field*** adds buttons that let you edit, delete, or select data.
+- the CommandField element also provides for an Insert button, but the GridView control doesn't directly support insert operations.
 
 
