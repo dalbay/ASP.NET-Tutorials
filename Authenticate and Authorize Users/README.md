@@ -61,3 +61,9 @@
 // In a non-page file
 	var ctx = HttpContext.CurrentGetOwinContext();
 ```
+<br/>
+
+## How to Create a Web Application that Authenticates Users
+-  The Web Forms template uses Individual User Accounts authentication by default.
+- The file in the Account, App_Start, and Models directories, along with the StartUp.cs file in the root directory, contain the code for a functioning authentications system. 
+![authentication asp.net](images/authImg1.png)
