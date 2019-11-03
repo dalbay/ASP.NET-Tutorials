@@ -34,7 +34,7 @@
 - It supports third party login providers like Microsoft, Google, Facebook, and Twitter.
 - It’s based on OWIN (Open Web Interface for .NET) middleware, which is an open source project that defines a standard interface between .NET web servers and web applications. 
 - It’s distributed as a NuGet package, so Microsoft can deliver new features and bug fixes faster than before.
-**The main objects used by ASP.NET Identity**  
+### The main objects used by ASP.NET Identity
 
 | Object |  Description
 | -------| ----------
@@ -50,4 +50,14 @@
 | SignInManager | Manages sign in operations for users.
 | SignInStatus | An enumeration whose values represent the result of a sign in attempt.
 | IdentityResult | Represents the result of an identity operation
-| ClaimsIdentity | Represents a claims-based identity
+| ClaimsIdentity | Represents a claims-based identity  
+<br/>
+
+### How to get the OwinContext object for the current request
+```C#
+// In a Code-behind file:
+	var ctx = Context.GetOwinContext();
+
+// In a non-page file
+	var ctx = HttpContext.CurrentGetOwinContext();
+```
