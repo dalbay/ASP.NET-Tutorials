@@ -197,7 +197,9 @@ protected void LogIn(object sender, EventArgs e)
 ```  
 
 ### How to change a User's Password  
-- The ManagePassword.aspx page of the Web Forms template
+- The ManagePassword.aspx page of the Web Forms template  
+<br/>
+
 ![manage user](images/authImg5.png) ![manage user](images/authImg6.png)   
 **Code for the Click event of the Change Password button**  
 ```C#
