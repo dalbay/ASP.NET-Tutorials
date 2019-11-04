@@ -53,7 +53,7 @@
 | ClaimsIdentity | Represents a claims-based identity  
 <br/>
 
-### How to get the OwinContext object for the current request
+### How to get the OwinContext object for the current request
 ```C#
 // In a Code-behind file:
 	var ctx = Context.GetOwinContext();
@@ -197,7 +197,7 @@ protected void LogIn(object sender, EventArgs e)
 ```  
 
 ### How to change a User's Password  
-The ManagePassword.aspx page of the Web Forms template
+- The ManagePassword.aspx page of the Web Forms template
 ![manage user](images/authImg5.png) ![manage user](images/authImg6.png)   
 **Code for the Click event of the Change Password button**  
 ```C#
