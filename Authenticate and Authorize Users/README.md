@@ -195,3 +195,35 @@ protected void LogIn(object sender, EventArgs e)
   }
 }
 ```  
+
+### How to change a User's Password  
+The ManagePassword.aspx page of the Web Forms template
+![manage user](images/authImg5.png) ![manage user](images/authImg6.png)   
+**Code for the Click event of the Change Password button**  
+```C#
+protected void ChangePassword_Click(object sender, EventArgs e)
+{
+    if (IsValid)
+    {
+        var manager = Context.GetOwinContext()
+            .GetUserManager<ApplicationUserManager>();
+        var signInManager = Context.GetOwinContext()
+            .Get<ApplicationSignInManager>();
+
+        IdentityResult result = manager.ChangePassword(
+            User.Identity.GetUserId(), CurrentPassword.Text, NewPassword.Text);
+
+        if (result.Succeeded) {
+            var user = manager.FindById(User.Identity.GetUserId());
+            signInManager.SignIn( user, isPersistent: false,
+                rememberBrowser: false);
+            Response.Redirect("~/Account/Manage?m=ChangePwdSuccess");
+        }
+        else 
+            AddErrors(result);
+        }
+    }
+}
+```  
+
+
