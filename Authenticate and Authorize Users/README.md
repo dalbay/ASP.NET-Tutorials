@@ -226,4 +226,30 @@ protected void ChangePassword_Click(object sender, EventArgs e)
 }
 ```  
 
+### How to change basic Configuration Options
+- To adjust things like the password length and the number of login failures that are allowed, you can modify the code in the ***IdentityConfig.cs***file.
+**The static Create method in the IdentityConfig.cs file**  
+
+```C#
+public static ApplicationUserManager Create(
+    IdentityFactoryOptions<ApplicationUserManager> options, 
+    IOwinContext context)
+{
+    var manager = new ApplicationUserManager(
+        new UserStore<ApplicationUser>(
+            context.Get<ApplicationDbContext>()));
+    // Configure validation logic for usernames
+    manager.UserValidator =
+        new UserValidator<ApplicationUser>(manager) {
+            AllowOnlyAlphanumericUserNames = false,
+            RequireUniqueEmail = true
+    };
+
+    // Configure validation logic for passwords
+	
+    . . .
+	
+    return manager;
+}
+```  
 
