@@ -67,3 +67,4 @@
 -  The Web Forms template uses Individual User Accounts authentication by default.
 - The file in the Account, App_Start, and Models directories, along with the StartUp.cs file in the root directory, contain the code for a functioning authentications system. 
 ![authentication asp.net](images/authImg1.png)
+![authentication asp.net](images/authImg2.png)
