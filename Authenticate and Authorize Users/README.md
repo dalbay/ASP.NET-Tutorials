@@ -71,6 +71,8 @@
 
 ### How to work with the LoginView and Login Status control
 - The master page includes a Bootstrap navbar that contains a LoginView control. This control displays links that let anonymous users register or log in. If a user is already authenticated, this control displays a link with the user's name and log off link. The log off link uses the LoginStatus control.  
+
+**aspx code for the navbar in the master page:**   
 ```C#
 <div class="navbar-collapse collapse">
     <ul class="nav navbar-nav">
@@ -106,5 +108,90 @@
         </LoggedInTemplate>
     </asp:LoginView>
 </div>
+```  
+**LogginOut event of the LoginStatus control:**  
+```C#
+protected void Unnamed_LoggingOut(object sender,
+    LoginCancelEventArgs e)
+{
+    Context.GetOwinContext().Authentication.SignOut(
+        DefaultAuthenticationTypes.ApplicationCookie);
+}
 
-```
+```  
+### How to Register a User  
+- The register page creates a new user and signs them in to the application. It also includes commented out sample code with a link to more information. 
+- By default, the user is redirected to the home page when registration succeeds.
+![register user](images/authImg3.png)  
+**Code for the Click event of the Register button**  
+```C#
+protected void CreateUser_Click(object sender, EventArgs e)
+{
+    var manager =
+        Context.GetOwinContext()
+            .GetUserManager<ApplicationUserManager>();
+    var signInManager = 
+        Context.GetOwinContext().Get<ApplicationSignInManager>();
+    var user = new ApplicationUser() {
+         UserName = Email.Text, Email = Email.Text };
+    IdentityResult result = manager.Create(user, Password.Text);
+    if (result.Succeeded) {
+        // For more information on how to enable account
+        // confirmation and password reset please visit 
+        // http://go.microsoft.com/fwlink/?LinkID=320771
+        // commented out sample code for how to handle an email
+        // confirmation 
+
+        signInManager.SignIn( 
+            user, isPersistent: false, rememberBrowser: false);
+        IdentityHelper.RedirectToReturnUrl(
+            Request.QueryString["ReturnUrl"], Response);
+    }
+    else {
+        ErrorMessage.Text = result.Errors.FirstOrDefault();
+    }
+}
+```  
+### How to Log In a User  
+![log in user](images/authImg4.png)  
+**Code for the Click event of the Log In button**  
+
+```C#
+protected void LogIn(object sender, EventArgs e)
+{
+  if (IsValid) {
+      var manager = Context.GetOwinContext()
+          .GetUserManager<ApplicationUserManager>();
+      var signinManager = Context.GetOwinContext()
+          .GetUserManager<ApplicationSignInManager>();
+      // This doesn't count login failures towards account
+      // lockout. To enable password failures to trigger lockout,
+      // change to shouldLockout: true
+      var result = signinManager.PasswordSignIn(
+          Email.Text, Password.Text, RememberMe.Checked,
+          shouldLockout: false);
+
+      switch (result) {
+          case SignInStatus.Success:
+            IdentityHelper.RedirectToReturnUrl(
+                Request.QueryString["ReturnUrl"], Response);
+            break;
+          case SignInStatus.LockedOut:
+            Response.Redirect("/Account/Lockout");
+            break;
+          case SignInStatus.RequiresVerification:
+            Response.Redirect(String.Format(
+              "/Account/TwoFactorAuthenticationSignIn" +
+              "?ReturnUrl={0}&RememberMe={1}",
+              Request.QueryString["ReturnUrl"],
+              RememberMe.Checked), true);
+            break;
+          case SignInStatus.Failure:
+          default:
+            FailureText.Text = "Invalid login attempt";
+            ErrorMessage.Visible = true;
+            break;
+    }
+  }
+}
+```  
