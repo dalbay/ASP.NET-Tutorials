@@ -295,8 +295,32 @@ In the root directory               In the Maintenance directory
     </system.web>
   </location>
 </configuration>
+```  
 
-```
+### How an application adds objects to the OwinContext object  
+- The Startup.Auth.cs file in the App_Start folder includes a class named Startup that contains a ConfigureAuth method. This method is called by the StartUp.cs file in the root directory at startup, and it makes sure there's only a single instance of certain objects per request.  
+Some of the code in the ConfigAuth method:  
+```C#
+public partial class Startup {
+
+    public void ConfigureAuth(IAppBuilder app)
+    {
+        // Configure the db context, user manager and signin
+        // manager to use a single instance per request
+        app.CreatePerOwinContext(ApplicationDbContext.Create);
+        app.CreatePerOwinContext<ApplicationUserManager>(
+            ApplicationUserManager.Create);
+        app.CreatePerOwinContext<ApplicationSignInManager>(
+            ApplicationSignInManager.Create);
+
+        // Configure the role manager to use a single instance
+        // per request
+        app.CreatePerOwinContext<ApplicationRoleManager>(
+            ApplicationRoleManager.Create);
+        ...
+}
+```  
+
 
 
 
