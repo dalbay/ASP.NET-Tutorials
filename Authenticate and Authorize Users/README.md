@@ -320,7 +320,33 @@ public partial class Startup {
         ...
 }
 ```  
+### How to modify an application to use roles
+ - To modify an application so it uses roles, you have to define an ApplicationRoleManager class that extends the RoleManager class. It's best to code this class in the IdentityConfig.cs class in the App_Start directory, along with the ApplicationUserManager and ApplicationSignInManager classes.  
+   Then, you add a statement to the ConfigAuth method in the Startup.Auth.cs file that adds an instance of the ApplicationRoleManager class to the OwinContext object.  
+   The ApplicationRoleManager class  
+ 
+ ```C#
+ public class ApplicationRoleManager : RoleManager<IdentityRole>
+{
+    public ApplicationRoleManager(IRoleStore<IdentityRole,
+        string> store) : base(store) {}
 
+    public static ApplicationRoleManager Create(
+        IdentityFactoryOptions<ApplicationRoleManager> options,
+        IOwinContext context)
+    {
+        var roleStore = new RoleStore<IdentityRole>(
+            context.Get<ApplicationDbContext>());
+        return new ApplicationRoleManager(roleStore);
+    }
+}
+```    
+Code that gets the ApplicationRoleManager object:  
+```C#
+ApplicationRoleManager roleMgr = Context.GetOwinContext().Get<ApplicationRoleManager>();
+```  
+
+ 
 
 
 
