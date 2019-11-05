@@ -345,6 +345,56 @@ Code that gets the ApplicationRoleManager object:
 ```C#
 ApplicationRoleManager roleMgr = Context.GetOwinContext().Get<ApplicationRoleManager>();
 ```  
+### How to work with the users and roles
+***A property of the RoleManager class:***  
+Roles - Returns an IQuerable of application roles.   
+***Some of the methods of the RoleManager class:***  
+Create(role)  
+Update(role)  
+Delete(role)  
+<br/>
+***A property of the UserManager class:***  
+Users - Returns an IQuerable of application users.  
+***Some of the methods of the UserManager class:***  
+Create(user)  
+Update(user)  
+Delete(user)  
+IsInRole(userID, role)  
+AddToRole(userID, role)  
+RemoveFromRole(userID, role)  
+<br/>
+
+***Two properties of the IdentityResult class:***  
+Succeeded  
+Errors  
+<br/>
+
+***Code that creates a new role:***  
+```C#
+ApplicationRoleManager roleMgr =
+    Context.GetOwinContext().Get<ApplicationRoleManager>();
+IdentityRole role = new IdentityRole();
+role.Name = "Admin";
+IdentityResult result = roleMgr.Create(role);
+if (result.Succeeded) { ... }
+```  
+***Code that creates a new user:***  
+```C#
+ApplicationUserManager userMgr = Context.GetOwinContext()
+    .GetUserManager<ApplicationUserManager>();
+ApplicationUser user = new ApplicationUser();
+user.UserName = "anne@murach.com";
+IdentityResult result = userMgr.Create(user);
+if (result.Succeeded) { ... }
+```  ***Code that associates the new user with the new role:***   
+```C#
+if (!userMgr.IsInRole(user.Id, role.Name))
+    userMgr.AddToRole(user.Id, role.Name);
+```  
+
+
+
+
 
  
 
