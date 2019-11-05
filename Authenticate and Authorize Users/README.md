@@ -198,7 +198,7 @@ protected void LogIn(object sender, EventArgs e)
 
 ### How to change a User's Password  
 - The ManagePassword.aspx page of the Web Forms template  
-<br/>
+
 
 ![manage user](images/authImg5.png) ![manage user](images/authImg6.png)   
 **Code for the Click event of the Change Password button**  
@@ -229,7 +229,8 @@ protected void ChangePassword_Click(object sender, EventArgs e)
 ```  
 
 ### How to change basic Configuration Options
-- To adjust things like the password length and the number of login failures that are allowed, you can modify the code in the ***IdentityConfig.cs***file.
+- To adjust things like the password length and the number of login failures that are allowed, you can modify the code in the ***IdentityConfig.cs*** file.  
+
 **The static Create method in the IdentityConfig.cs file**  
 
 ```C#
@@ -254,4 +255,52 @@ public static ApplicationUserManager Create(
     return manager;
 }
 ```  
+## How to Authorize Users
+- The authorization element in a Web.config file lets you code allow and deny elements that control which users or roles can access an application. 
+- Wildcard specifications in the users attribute:  
+  ![Wildcard authorization](images/authImg7.png)  
+
+***An access rule that allows access to all users:***  
+```HTML
+	<allow users="*" />
+```
+***An access rule that allows access only to users in a specific role:***  
+```HTML
+	<allow roles="Employees" />
+	<deny users="*" />
+```  
+***Two ways to allow only authenticated users access to the resources in a specific directory:***  
+```HTML                              
+In the root directory               In the Maintenance directory
+
+<configuration>                     <configuration>
+  <location path="Maintenance">       <system.web>
+    <system.web>                        <authorization>
+       <authorization>                    <deny users="?" />
+         <deny users="?" />             </authorization>
+       </authorization>               </system.web>
+    </system.web>                   </configuration>
+  </location>
+</configuration>
+```  
+***How to allow users in a specific role access to a specific page:***  
+```HTML
+<configuration>
+  <location path="Admin.aspx">
+    <system.web>
+       <authorization>
+         <allow roles="admin" />
+         <deny users="*" />
+       </authorization>
+    </system.web>
+  </location>
+</configuration>
+
+```
+
+
+
+
+
+
 
