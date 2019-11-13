@@ -371,8 +371,7 @@ Errors
 
 ***Code that creates a new role:***  
 ```C#
-ApplicationRoleManager roleMgr =
-    Context.GetOwinContext().Get<ApplicationRoleManager>();
+ApplicationRoleManager roleMgr = Context.GetOwinContext().Get<ApplicationRoleManager>();
 IdentityRole role = new IdentityRole();
 role.Name = "Admin";
 IdentityResult result = roleMgr.Create(role);
@@ -380,13 +379,12 @@ if (result.Succeeded) { ... }
 ```  
 ***Code that creates a new user:***  
 ```C#
-ApplicationUserManager userMgr = Context.GetOwinContext()
-    .GetUserManager<ApplicationUserManager>();
+ApplicationUserManager userMgr = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
 ApplicationUser user = new ApplicationUser();
 user.UserName = "anne@murach.com";
 IdentityResult result = userMgr.Create(user);
 if (result.Succeeded) { ... }
-```  ***Code that associates the new user with the new role:***   
+```  ***Code that associates the new user with the new role:***   
 ```C#
 if (!userMgr.IsInRole(user.Id, role.Name))
     userMgr.AddToRole(user.Id, role.Name);
